@@ -138,6 +138,20 @@
       background: rgba(15, 82, 87, 0.08);
     }
 
+    /* real app icon filling the icon container as a rounded squircle */
+    .svc-icon--img {
+      background: none;
+      overflow: hidden;
+    }
+
+    .svc-icon--img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: inherit;
+      display: block;
+    }
+
     .svc-tile h3 {
       font-family: "SF Pro Rounded", "SF Pro Display", "Fraunces", serif;
       font-size: 1.08rem;
@@ -333,7 +347,7 @@
       </div>
       <div class="svc-grid">
         <a class="svc-tile" href="intro.html">
-          <span class="svc-icon" aria-hidden="true">🪄</span>
+          <span class="svc-icon svc-icon--img" aria-hidden="true"><img src="assets/kukku-app-icon.png" alt="Kukku app icon" width="48" height="48" /></span>
           <h3>Kukku AI App</h3>
           <p>On-device personal AI for iOS — one of our AI-powered products.</p>
           <ul class="svc-points">
