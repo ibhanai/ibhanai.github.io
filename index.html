@@ -85,22 +85,29 @@
       font-size: clamp(2.15rem, 3.4vw, 3.15rem);
       line-height: 1.1;
       margin-bottom: 18px;
-      max-width: 15ch;
-      min-height: 2.2em;         /* reserve 2 lines so rotating text doesn't shift layout */
+      max-width: 18ch;
+      min-height: 2.05em;        /* prefix line + one rotating line — constant, no jump */
       letter-spacing: -0.015em;
     }
 
     .cp-rotator {
-      display: inline;
+      display: block;
     }
 
+    /* small fixed lead-in on its own tier; the rotating target sits below it */
     .cp-rotator-prefix {
+      display: block;
+      font-size: 0.6em;
+      font-weight: 600;
+      letter-spacing: 0.005em;
+      color: var(--ink);
       white-space: nowrap;
+      margin-bottom: 4px;
     }
 
     .cp-rotator-word {
       position: relative;
-      display: inline-block;
+      display: block;
       background: linear-gradient(100deg, var(--sea), var(--sun) 92%);
       -webkit-background-clip: text;
       background-clip: text;
@@ -691,15 +698,16 @@
       <article class="cp-card cp-hero-card" data-reveal>
         <canvas id="hero-canvas" aria-hidden="true"></canvas>
         <div class="cp-hero-copy">
-          <p class="eyebrow">AI, Engineered End to End</p>
+          <p class="eyebrow">Full-lifecycle AI engineering</p>
           <h1 class="cp-rotator">
+            <span class="cp-rotator-prefix">AI, engineered for</span>
             <span class="cp-rotator-word cp-roll"
-              data-words="Engineered end to end|From model to production|Solutions for your industry|AI on your ground">Engineered end to end</span>
+              data-words="the edge|private cloud|secure teams|on-premise">the edge</span>
           </h1>
           <p class="cp-lead">
-            IbhanAi Labs engineers AI the whole way — we evaluate, fine-tune and optimize models, ship them as
-            products, and apply them as solutions across your industry. Everything runs where your data already
-            lives: on your devices, in your own cloud, or fully on-premise.
+            We bridge the gap between AI potential and operational reality. From on-device edge intelligence to
+            secure private-cloud deployments, we engineer, build, and operationalize the AI your business needs —
+            running where your data already lives.
           </p>
           <div class="cp-tags">
             <span>Engineering</span>
