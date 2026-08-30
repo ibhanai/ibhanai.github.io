@@ -1,0 +1,857 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="IbhanAi Labs engineers AI you own — deployed on your devices, in your own cloud, or on-premise: the Kukku personal AI app, voice agents, AI unified messaging, and applied AI for manufacturing, pharmaceuticals and financial services." />
+  <title>IbhanAi Labs - Company Profile</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@1,6..72,500;1,6..72,600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="legacy.css" />
+  <style>
+    .profile-shell {
+      display: grid;
+      gap: 26px;
+      max-width: 1000px;
+      margin-inline: auto;
+    }
+
+    .cp-hero {
+      display: block;
+    }
+
+    .cp-card {
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 26px;
+      box-shadow: 0 24px 46px rgba(10, 11, 13, 0.1);
+      backdrop-filter: blur(4px);
+    }
+
+    .cp-hero-card {
+      position: relative;
+      overflow: hidden;
+      max-width: 900px;
+      margin: 0 auto;
+      min-height: 420px;
+      padding: 44px 40px;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 26px;
+      align-items: center;
+      background: #fff;
+    }
+
+    /* neuron field behind the whole hero */
+    #hero-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* right-hand atom stage — floats over the neuron field */
+    .cp-hero-atom {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 300px;
+      padding: 20px;
+      perspective: 900px;
+    }
+
+    /* orbital-atom styles are shared from legacy.css */
+    .stage-glow { position: absolute; width: 60%; height: 60%; border-radius: 50%; background: radial-gradient(circle, rgba(15,82,87,0.14), transparent 70%); filter: blur(24px); z-index: 0; }
+
+    .cp-hero-copy {
+      position: relative;
+      z-index: 1;
+      min-width: 0;
+      max-width: 100%;
+      margin: 0;
+      text-align: left;
+    }
+
+    .cp-hero .cp-card h1 {
+      font-family: "Fraunces", Georgia, serif;
+      font-size: clamp(2.15rem, 3.4vw, 3.15rem);
+      line-height: 1.1;
+      margin-bottom: 18px;
+      max-width: 15ch;
+      min-height: 2.2em;         /* reserve 2 lines so rotating text doesn't shift layout */
+      letter-spacing: -0.015em;
+    }
+
+    .cp-rotator {
+      display: inline;
+    }
+
+    .cp-rotator-prefix {
+      white-space: nowrap;
+    }
+
+    .cp-rotator-word {
+      position: relative;
+      display: inline-block;
+      background: linear-gradient(100deg, var(--sea), var(--sun) 92%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+    }
+
+    /* Shared roll transition for hero headline + feed line */
+    .cp-roll {
+      transition: opacity 240ms ease, transform 240ms ease;
+    }
+
+    .cp-roll.is-changing {
+      opacity: 0.12;
+      transform: translateY(0.16em);
+    }
+
+    .cp-feed {
+      margin-top: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 9px;
+      min-height: 22px;
+      flex-wrap: wrap;
+    }
+
+    .cp-feed-star {
+      color: var(--sun);
+      font-size: 0.8rem;
+      line-height: 1;
+    }
+
+    .cp-feed-word {
+      display: inline-block;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: var(--sea-dark);
+    }
+
+    .cp-lead {
+      font-size: 1.03rem;
+      line-height: 1.68;
+      color: rgba(10, 11, 13, 0.74);
+      max-width: 52ch;
+      margin: 0;
+    }
+
+    .cp-tags {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      gap: 10px;
+    }
+
+    .cp-tags span {
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      font-weight: 600;
+      border-radius: 999px;
+      border: 1px solid rgba(15, 82, 87, 0.2);
+      background: rgba(15, 82, 87, 0.07);
+      color: var(--accent-d);
+      padding: 7px 13px;
+    }
+
+    .nav {
+      gap: 16px;
+      justify-content: space-between;
+      flex-wrap: nowrap;
+      align-items: center;
+    }
+
+    .nav .brand {
+      flex: 1 1 auto;
+    }
+
+    .nav-links {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      white-space: nowrap;
+    }
+
+    .nav-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+    }
+
+    @keyframes cp-marquee {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    .cp-services {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .cp-services article,
+    .cp-timeline article,
+    .cp-values article {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 20px;
+      box-shadow: 0 16px 32px rgba(10, 11, 13, 0.08);
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .cp-services article:hover,
+    .cp-timeline article:hover,
+    .cp-values article:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 44px rgba(10, 11, 13, 0.13);
+    }
+
+    .cp-svc-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 46px;
+      height: 46px;
+      font-size: 1.5rem;
+      line-height: 1;
+      border-radius: 14px;
+      margin-bottom: 12px;
+      background: rgba(15, 82, 87, 0.08);
+    }
+
+    .cp-bullets {
+      list-style: none;
+      display: grid;
+      gap: 9px;
+      margin-top: 4px;
+    }
+
+    .cp-bullets li {
+      position: relative;
+      padding-left: 20px;
+      line-height: 1.5;
+      color: rgba(10, 11, 13, 0.74);
+      font-size: 0.93rem;
+    }
+
+    .cp-bullets li::before {
+      content: "";
+      position: absolute;
+      left: 3px;
+      top: 0.5em;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--sea);
+    }
+
+    /* Section heading */
+    .cp-sec-head {
+      max-width: 62ch;
+      margin: 0 0 22px;
+    }
+
+    .cp-sec-head .eyebrow {
+      margin-bottom: 8px;
+    }
+
+    .cp-sec-head h2 {
+      font-family: "Fraunces", serif;
+      font-size: clamp(1.6rem, 2.6vw, 2.3rem);
+      font-weight: 700;
+      line-height: 1.14;
+      margin-bottom: 8px;
+    }
+
+    .cp-sec-head p {
+      color: rgba(10, 11, 13, 0.72);
+      line-height: 1.6;
+    }
+
+    /* Nav CTA button */
+    .cp-nav-cta {
+      background: var(--sea);
+      color: #fff !important;
+      padding: 9px 18px !important;
+      border-radius: 999px;
+      box-shadow: 0 10px 20px rgba(31, 111, 120, 0.22);
+      transition: background 160ms ease;
+    }
+
+    .cp-nav-cta:hover {
+      background: var(--sea-dark);
+    }
+
+    /* Hero CTA row */
+    .cp-hero-cta {
+      margin-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: flex-start;
+    }
+
+    /* Offerings bridge cards */
+    .cp-offerings {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+    }
+
+    .cp-offer {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--ink);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 26px;
+      background:
+        radial-gradient(circle at 100% 0%, rgba(199, 230, 242, 0.5), transparent 52%),
+        #fff;
+      box-shadow: 0 18px 38px rgba(10, 11, 13, 0.08);
+      transition: transform 180ms ease, box-shadow 180ms ease;
+      overflow: hidden;
+    }
+
+    .cp-offer:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 28px 52px rgba(10, 11, 13, 0.14);
+    }
+
+    .cp-offer-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 54px;
+      height: 54px;
+      font-size: 1.8rem;
+      line-height: 1;
+      border-radius: 16px;
+      background: rgba(15, 82, 87, 0.08);
+    }
+
+    .cp-offer h3 {
+      font-family: "Fraunces", serif;
+      font-size: 1.35rem;
+    }
+
+    .cp-offer p {
+      color: rgba(10, 11, 13, 0.72);
+      line-height: 1.55;
+      flex: 1;
+    }
+
+    .cp-offer-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .cp-offer-chips span {
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--sea-dark);
+      background: rgba(199, 230, 242, 0.5);
+      border: 1px solid rgba(31, 111, 120, 0.18);
+      border-radius: 999px;
+      padding: 5px 11px;
+    }
+
+    .cp-offer-link {
+      font-weight: 600;
+      color: var(--sea-dark);
+    }
+
+    /* Numbered process (methodology) */
+    .cp-process {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .cp-process article {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: 0 16px 32px rgba(10, 11, 13, 0.08);
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .cp-process article:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 44px rgba(10, 11, 13, 0.13);
+    }
+
+    .cp-step-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .cp-step-num {
+      flex: 0 0 auto;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--sea-dark);
+      color: #fff;
+      font-family: "Fraunces", serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cp-process h3 {
+      font-family: "Fraunces", serif;
+      font-size: 1.12rem;
+      margin-bottom: 8px;
+    }
+
+    .cp-services h3,
+    .cp-timeline h3,
+    .cp-values h3 {
+      font-family: "Fraunces", serif;
+      margin-bottom: 8px;
+      font-size: 1.12rem;
+    }
+
+    .cp-services p,
+    .cp-timeline p,
+    .cp-values p {
+      line-height: 1.58;
+      color: rgba(10, 11, 13, 0.73);
+    }
+
+    .cp-timeline {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .cp-phase {
+      display: inline-flex;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--sea-dark);
+      font-size: 0.74rem;
+      border-radius: 999px;
+      border: 1px solid rgba(11, 60, 68, 0.2);
+      padding: 5px 10px;
+      background: rgba(240, 218, 193, 0.45);
+    }
+
+    .cp-values {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .cp-cta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      background:
+        radial-gradient(circle at 0% 100%, rgba(199, 230, 242, 0.38), transparent 38%),
+        radial-gradient(circle at 100% 0%, rgba(246, 178, 107, 0.22), transparent 36%),
+        #fff;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: 0 16px 30px rgba(10, 11, 13, 0.08);
+    }
+
+    .cp-cta h3 {
+      font-family: "Fraunces", serif;
+      font-size: 1.5rem;
+      margin-bottom: 6px;
+    }
+
+    .cp-socials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .cp-socials a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid rgba(11, 60, 68, 0.14);
+      background: rgba(255, 255, 255, 0.82);
+      color: var(--sea-dark);
+      text-decoration: none;
+    }
+
+    .cp-socials svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(18px) scale(0.99);
+      transition: opacity 620ms ease, transform 620ms ease;
+    }
+
+    [data-reveal].visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    @media (max-width: 980px) {
+      .nav {
+        flex-wrap: wrap;
+      }
+
+      .nav .brand {
+        flex: 1 1 auto;
+      }
+
+      .cp-nav-feed {
+        order: 3;
+        flex-basis: 100%;
+        width: 100%;
+      }
+
+      .cp-hero,
+      .cp-services,
+      .cp-timeline,
+      .cp-process,
+      .cp-values {
+        grid-template-columns: 1fr;
+      }
+
+      .cp-hero-card {
+        min-height: auto;
+        grid-template-columns: 1fr;
+        background: #fff;
+      }
+
+      .cp-hero-atom {
+        order: -1;
+        min-height: 240px;
+      }
+
+      .cp-hero-copy {
+        max-width: 100%;
+      }
+
+      .cp-hero .cp-card h1 {
+        white-space: normal;
+        line-height: 1.08;
+      }
+
+      .cp-cta {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      [data-reveal] {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+
+      .cp-marquee-track {
+        animation: none !important;
+        transform: none !important;
+        white-space: normal;
+        width: auto;
+        flex-wrap: wrap;
+        padding: 0 14px;
+      }
+
+      .cp-nav-feed-track {
+        animation: none !important;
+        transform: none !important;
+        white-space: normal;
+        width: auto;
+        flex-wrap: wrap;
+        padding: 0 14px;
+      }
+    }
+  </style>
+  <!-- SEO:start -->
+  <link rel="canonical" href="https://ibhanai.com/" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#1f6f78" />
+  <meta name="author" content="IbhanAi Labs" />
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="IbhanAi Labs" />
+  <meta property="og:title" content="IbhanAi Labs - Company Profile" />
+  <meta property="og:description" content="IbhanAi Labs engineers AI you own — deployed on your devices, in your own cloud, or on-premise: the Kukku personal AI app, voice agents, AI unified messaging, and applied AI for manufacturing, pharmaceuticals and financial services." />
+  <meta property="og:url" content="https://ibhanai.com/" />
+  <meta property="og:image" content="https://ibhanai.com/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="IbhanAi Labs - Company Profile" />
+  <meta name="twitter:description" content="IbhanAi Labs engineers AI you own — deployed on your devices, in your own cloud, or on-premise: the Kukku personal AI app, voice agents, AI unified messaging, and applied AI for manufacturing, pharmaceuticals and financial services." />
+  <meta name="twitter:image" content="https://ibhanai.com/og-image.png" />
+  <!-- Icons -->
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <!-- SEO:end -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://ibhanai.com/#organization",
+        "name": "IbhanAi Labs",
+        "url": "https://ibhanai.com/",
+        "logo": "https://ibhanai.com/icon-512.png",
+        "image": "https://ibhanai.com/og-image.png",
+        "description": "IbhanAi Labs builds private, on-device and on-premise AI — the Kukku personal AI app, on-premise voice agents, AI unified messaging, and applied AI for manufacturing, pharmaceuticals and financial services.",
+        "email": "support@ibhanai.com",
+        "sameAs": ["https://www.linkedin.com/company/kukku-ai-solutions"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://ibhanai.com/#website",
+        "url": "https://ibhanai.com/",
+        "name": "IbhanAi Labs",
+        "publisher": { "@id": "https://ibhanai.com/#organization" }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <div id="progress" aria-hidden="true"></div>
+  <div class="glow" aria-hidden="true"></div>
+
+  <header class="nav">
+    <div class="brand">
+      <a href="index.html" aria-label="Kukku home">
+        <svg class="mark" viewBox="0 0 40 40" fill="none" aria-hidden="true"><ellipse cx="20" cy="20" rx="18" ry="8" stroke="var(--accent)" stroke-width="2.4" transform="rotate(45 20 20)"/><ellipse cx="20" cy="20" rx="18" ry="8" stroke="var(--brass)" stroke-width="2.4" transform="rotate(-45 20 20)"/><circle cx="14.5" cy="20" r="3.4" fill="var(--accent)"/><circle cx="25.5" cy="20" r="3.4" fill="var(--accent)"/><rect x="16" y="18.6" width="8" height="2.8" fill="var(--accent)"/></svg><span class="wm">Ibhan<span class="ai">Ai</span><span class="labs">Labs</span></span>
+      </a>
+    </div>
+    <nav class="nav-links">
+      <a href="engineering.html">Engineering</a>
+      <a href="platform.html">Products</a>
+      <a href="solutions.html">Solutions</a>
+      <a href="services.html">Services</a>
+      <a href="blog/">Blog</a>
+      <a class="nav-cta" href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main class="profile-shell">
+    <section class="cp-hero">
+      <article class="cp-card cp-hero-card" data-reveal>
+        <canvas id="hero-canvas" aria-hidden="true"></canvas>
+        <div class="cp-hero-copy">
+          <p class="eyebrow">AI, Engineered End to End</p>
+          <h1 class="cp-rotator">
+            <span class="cp-rotator-word cp-roll"
+              data-words="Engineered end to end|From model to production|Solutions for your industry|AI on your ground">Engineered end to end</span>
+          </h1>
+          <p class="cp-lead">
+            IbhanAi Labs engineers AI the whole way — we evaluate, fine-tune and optimize models, ship them as
+            products, and apply them as solutions across your industry. Everything runs where your data already
+            lives: on your devices, in your own cloud, or fully on-premise.
+          </p>
+          <div class="cp-tags">
+            <span>Engineering</span>
+            <span>Products</span>
+            <span>Solutions &amp; Services</span>
+          </div>
+          <p class="cp-feed" aria-label="What we do">
+            <span class="cp-feed-star" aria-hidden="true">✦</span>
+            <span class="cp-feed-word cp-roll"
+              data-words="AI engineering|Products you can deploy|Industry solutions|Services to production">AI engineering</span>
+          </p>
+          <div class="cp-hero-cta">
+            <a class="button" href="engineering.html">Explore engineering</a>
+            <a class="ghost" href="platform.html">See products</a>
+          </div>
+        </div>
+        <div class="cp-hero-atom" aria-hidden="true">
+          <div class="atom" id="atom">
+            <div class="orbit o1"><div class="spin"><i class="e e1"></i></div></div>
+            <div class="orbit o2"><div class="spin"><i class="e e2"></i></div></div>
+            <div class="orbit o3"><div class="spin"><i class="e e3"></i></div></div>
+            <div class="core"></div>
+          </div>
+          <div class="stage-glow"></div>
+        </div>
+      </article>
+    </section>
+
+    <section id="lifecycle" class="cp-block">
+      <div class="cp-sec-head" data-reveal>
+        <p class="eyebrow">The full lifecycle</p>
+        <h2>From engineering to production</h2>
+        <p>IbhanAi Labs takes AI the whole way — engineered in-house, shipped as products, and applied as
+          solutions and services across your industry. Deep detail lives on each page below.</p>
+      </div>
+      <div class="cp-offerings">
+        <a class="cp-offer" href="engineering.html" data-reveal data-delay="60">
+          <span class="cp-offer-icon" aria-hidden="true">&#129514;</span>
+          <h3>Engineering</h3>
+          <p>The AI engineering behind everything we ship — evaluation, training, optimization and safe deployment.</p>
+          <span class="cp-offer-chips">
+            <span>Evaluation</span>
+            <span>Fine-tuning</span>
+            <span>Optimization</span>
+          </span>
+          <span class="cp-offer-link">See AI Engineering &#8594;</span>
+        </a>
+        <a class="cp-offer" href="platform.html" data-reveal data-delay="110">
+          <span class="cp-offer-icon" aria-hidden="true">&#128230;</span>
+          <h3>Products</h3>
+          <p>A family of AI products you can deploy today — on your device or inside your own network.</p>
+          <span class="cp-offer-chips">
+            <span>Kukku AI App</span>
+            <span>Voice Agent</span>
+            <span>Unified Messaging</span>
+          </span>
+          <span class="cp-offer-link">Explore products &#8594;</span>
+        </a>
+        <a class="cp-offer" href="solutions.html" data-reveal data-delay="160">
+          <span class="cp-offer-icon" aria-hidden="true">&#127981;</span>
+          <h3>Solutions</h3>
+          <p>Applied AI shaped around your sector's workflows and compliance needs.</p>
+          <span class="cp-offer-chips">
+            <span>Manufacturing</span>
+            <span>Pharmaceuticals</span>
+            <span>Financial</span>
+          </span>
+          <span class="cp-offer-link">Explore Solutions &#8594;</span>
+        </a>
+        <a class="cp-offer" href="services.html" data-reveal data-delay="210">
+          <span class="cp-offer-icon" aria-hidden="true">&#129517;</span>
+          <h3>Services</h3>
+          <p>Product engineering, infrastructure advisory and workflow modernization to get you to production.</p>
+          <span class="cp-offer-chips">
+            <span>Product build</span>
+            <span>Advisory</span>
+            <span>Modernization</span>
+          </span>
+          <span class="cp-offer-link">See services &#8594;</span>
+        </a>
+      </div>
+    </section>
+
+    <section id="contact" class="cp-cta" data-reveal data-delay="90">
+      <div>
+        <p class="eyebrow">Work With Us</p>
+        <h3>Planning an AI initiative this quarter?</h3>
+        <p class="cp-lead">Let's scope a focused pilot and define a production path your team can execute confidently.</p>
+        <div class="cp-socials">
+          <a href="https://x.com/Parmarsg" target="_blank" rel="noopener noreferrer" aria-label="X / Twitter">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M18.9 2H22l-6.8 7.8L23.2 22h-6.3l-4.9-7.4L5.6 22H2.5l7.3-8.4L1.7 2H8l4.4 6.8L18.9 2Zm-1.1 18h1.7L7 3.9H5.2L17.8 20Z" />
+            </svg>
+          </a>
+          <a href="https://www.linkedin.com/in/prakash-parmar-b9230578" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M6.94 8.5H3.56V19.5h3.38V8.5ZM5.25 3a1.96 1.96 0 1 0 0 3.92A1.96 1.96 0 0 0 5.25 3Zm5.1 5.5H7.03V19.5h3.32v-5.78c0-1.52.29-3 2.17-3 1.86 0 1.88 1.74 1.88 3.1v5.68h3.33v-6.36c0-3.13-.67-5.54-4.33-5.54-1.76 0-2.94.97-3.42 1.88h-.05V8.5Z" />
+            </svg>
+          </a>
+        </div>
+      </div>
+      <a class="button" href="mailto:support@ibhanai.com">Contact IbhanAi Labs</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 IbhanAi Labs. · <a href="blog/">Blog</a> · <a href="https://www.linkedin.com/company/kukku-ai-solutions" target="_blank" rel="noopener noreferrer">LinkedIn</a> · <a href="index.html">Back to Home</a></p>
+  </footer>
+
+  <script>
+    const elements = document.querySelectorAll("[data-reveal]");
+    const rollers = document.querySelectorAll("[data-words]");
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const setVisible = (el) => {
+      const delay = Number(el.dataset.delay || "0");
+      if (delay) {
+        el.style.transitionDelay = `${delay}ms`;
+      }
+      el.classList.add("visible");
+    };
+
+    if (!reduceMotion && "IntersectionObserver" in window) {
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisible(entry.target);
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.16, rootMargin: "0px 0px -10% 0px" });
+
+      elements.forEach((el) => revealObserver.observe(el));
+    } else {
+      elements.forEach((el) => setVisible(el));
+    }
+
+    if (!reduceMotion) {
+      rollers.forEach((el, idx) => {
+        const words = (el.dataset.words || "")
+          .split("|")
+          .map((word) => word.trim())
+          .filter(Boolean);
+        if (words.length < 2) return;
+        let wordIndex = 0;
+        window.setInterval(() => {
+          el.classList.add("is-changing");
+          window.setTimeout(() => {
+            wordIndex = (wordIndex + 1) % words.length;
+            el.textContent = words[wordIndex];
+            el.classList.remove("is-changing");
+          }, 240);
+        }, 2600 + idx * 400);
+      });
+    }
+  </script>
+  <script src="site.js"></script>
+</body>
+</html>

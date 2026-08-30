@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Kukku release roadmap — monthly and quarterly enhancements for the Kukku personal AI app." />
+    <title>Personal AI Kukku Me Docs - Release Roadmap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@1,6..72,500;1,6..72,600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="legacy.css" />
+    <style>
+      .docs-wrap {
+        display: grid;
+        gap: 24px;
+      }
+      .docs-hero {
+        background: rgba(255, 255, 255, 0.88);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        padding: 28px;
+        box-shadow: 0 20px 44px rgba(10, 11, 13, 0.1);
+      }
+      .docs-hero h1 {
+        font-family: "Fraunces", serif;
+        font-size: clamp(1.7rem, 3vw, 2.35rem);
+        line-height: 1.18;
+        margin-bottom: 12px;
+      }
+      .docs-tabs {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 18px;
+      }
+      .docs-product {
+        font-size: 0.84rem;
+        color: rgba(10, 11, 13, 0.62);
+        margin-top: 4px;
+        margin-bottom: 8px;
+      }
+      .docs-tab {
+        text-decoration: none;
+        border: 1px solid var(--line);
+        padding: 8px 14px;
+        border-radius: 999px;
+        color: var(--ink);
+        background: #fff;
+        font-size: 0.9rem;
+      }
+      .docs-tab.active {
+        background: var(--sea);
+        color: #fff;
+        border-color: transparent;
+      }
+      .doc-card {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        padding: 22px;
+        box-shadow: 0 14px 28px rgba(10, 11, 13, 0.08);
+      }
+      .doc-card h2 {
+        font-family: "Fraunces", serif;
+        margin-bottom: 10px;
+      }
+      .doc-card p,
+      .doc-card li {
+        line-height: 1.6;
+        color: rgba(10, 11, 13, 0.78);
+      }
+      .doc-card ul,
+      .doc-card ol {
+        padding-left: 18px;
+        display: grid;
+        gap: 6px;
+      }
+      .release-index a {
+        color: var(--sea-dark);
+        text-decoration: none;
+        border-bottom: 1px dashed rgba(11, 60, 68, 0.35);
+      }
+      .release-section {
+        scroll-margin-top: 90px;
+      }
+      .note {
+        border-left: 3px solid var(--sea);
+        padding: 10px 12px;
+        background: rgba(199, 230, 242, 0.3);
+        border-radius: 10px;
+        margin-top: 10px;
+      }
+    </style>
+  <!-- SEO:start -->
+  <link rel="canonical" href="https://ibhanai.com/docs-release.html" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#1f6f78" />
+  <meta name="author" content="IbhanAi Labs" />
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="IbhanAi Labs" />
+  <meta property="og:title" content="Personal AI Kukku Me Docs - Release Roadmap" />
+  <meta property="og:description" content="Kukku release roadmap — monthly and quarterly enhancements for the Kukku personal AI app." />
+  <meta property="og:url" content="https://ibhanai.com/docs-release.html" />
+  <meta property="og:image" content="https://ibhanai.com/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Personal AI Kukku Me Docs - Release Roadmap" />
+  <meta name="twitter:description" content="Kukku release roadmap — monthly and quarterly enhancements for the Kukku personal AI app." />
+  <meta name="twitter:image" content="https://ibhanai.com/og-image.png" />
+  <!-- Icons -->
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <!-- SEO:end -->
+</head>
+  <body>
+  <div id="progress" aria-hidden="true"></div>
+    <div class="glow" aria-hidden="true"></div>
+
+    <header class="nav">
+      <div class="brand">
+        <a href="index.html" aria-label="Kukku home">
+          <svg class="mark" viewBox="0 0 40 40" fill="none" aria-hidden="true"><ellipse cx="20" cy="20" rx="18" ry="8" stroke="var(--accent)" stroke-width="2.4" transform="rotate(45 20 20)"/><ellipse cx="20" cy="20" rx="18" ry="8" stroke="var(--brass)" stroke-width="2.4" transform="rotate(-45 20 20)"/><circle cx="14.5" cy="20" r="3.4" fill="var(--accent)"/><circle cx="25.5" cy="20" r="3.4" fill="var(--accent)"/><rect x="16" y="18.6" width="8" height="2.8" fill="var(--accent)"/></svg><span class="wm">Ibhan<span class="ai">Ai</span><span class="labs">Labs</span></span>
+        </a>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="index.html">Company</a>
+        <div class="nav-item has-dropdown">
+          <a href="docs-user.html">Docs</a>
+          <div class="nav-dropdown">
+            <span class="nav-subtitle">Personal AI Kukku Me</span>
+            <a href="docs-user.html">User Guide</a>
+            <a href="docs-platform.html">Platform Guide</a>
+            <a href="docs-tools.html">Tools Guide</a>
+            <a href="docs-skills.html">Skills Guide</a>
+            <a href="docs-release.html">Release Roadmap</a>
+          </div>
+        </div>
+        <a href="privacy.html">Privacy</a>
+        <a href="support.html">Support</a>
+      </nav>
+    </header>
+
+    <main class="docs-wrap">
+      <section class="docs-hero">
+        <p class="eyebrow">Documentation · Kukku 2.0</p>
+        <h1>Personal AI Kukku Me Release Roadmap</h1>
+        <p class="lede">Track monthly and quarterly product enhancements in one place for planning, communication, and release visibility.</p>
+        <p class="docs-product">Personal AI Kukku Me App Docs</p>
+        <div class="docs-tabs">
+          <a class="docs-tab" href="docs-user.html">User Guide</a>
+          <a class="docs-tab" href="docs-platform.html">Platform Guide</a>
+          <a class="docs-tab" href="docs-tools.html">Tools Guide</a>
+          <a class="docs-tab" href="docs-skills.html">Skills Guide</a>
+          <a class="docs-tab active" href="docs-release.html">Release Roadmap</a>
+        </div>
+      </section>
+
+      <section class="doc-card">
+        <h2>Release Index</h2>
+        <ol class="release-index">
+          <li><a href="#release-ios-v1-build8">Base Release: iOS v1.0 (Build 8) - March 11, 2026</a></li>
+          <li><a href="#release-2026-04">Enhancements Roadmap (April 2026)</a></li>
+          <li><a href="#release-kukku-2">Kukku 2.0 (Build 14) - Major Update (Apple approved · releasing August 17, 2026)</a></li>
+        </ol>
+      </section>
+
+      <section class="doc-card release-section" id="release-ios-v1-build8">
+        <h2>Base Release: iOS v1.0 (Build 8) - March 11, 2026</h2>
+        <p class="note"><strong>Release status:</strong> iOS approved and available on the App Store.</p>
+      </section>
+
+      <section class="doc-card release-section" id="release-2026-04">
+        <h2>Enhancements Roadmap (April 2026)</h2>
+        <ol>
+          <li><strong>Regional Model Expansion:</strong> Add new region-optimized AI models to improve response quality for local language usage, context, and cultural relevance while keeping privacy and on-device-first behavior aligned with Kukku Me standards.</li>
+          <li><strong>Food Calorie Estimator Tool:</strong> Introduce a new tool that estimates calories from user food input (text and image-assisted workflows where available). Users can attach this tool to any agent, including creating a dedicated Food Calorie Estimator agent.</li>
+        </ol>
+        <p class="note"><strong>Disclaimer:</strong> This roadmap is for planning visibility only and may change based on testing, quality validation, platform constraints, and user feedback. Features listed are not guaranteed for a specific release date and may be modified, delayed, or reprioritized. Food calorie estimates are informational only and are not medical advice; consult qualified professionals for clinical or dietary decisions.</p>
+      </section>
+
+      <section class="doc-card release-section" id="release-kukku-2">
+        <h2>Kukku 2.0 (Build 14) - Major Update</h2>
+        <p>A complete redesign that turns Kukku into a daily companion, plus four new agents, per-agent Journals, and native skills — now with powerful on-device AI powered by the Gemma 4 model.</p>
+        <h3 style="margin-top:14px;font-size:1.05rem;">New</h3>
+        <ul>
+          <li><strong>Redesigned experience:</strong> refreshed UI, new animations, and emoji icons rendered with Metal shaders.</li>
+          <li><strong>Home Dashboard:</strong> Kukku Smart card and Reflection card, CTA agents, and horizontal rails; All Agents view with grid and card layouts.</li>
+          <li><strong>Four new seeded agents:</strong> Habits, Expenses, Food &amp; Nutrition (Nutrition Analyst) and Everyday Agent.</li>
+          <li><strong>Journals:</strong> a per-agent feature with today, weekly and monthly views for habits, expenses, nutrition and health (analytics runs internally).</li>
+          <li><strong>Skills:</strong> Kukku native Habit Tracker and Expense Tracker skills, plus support for additional skills following the <code>skills.md</code> standard (skills and tools are mutually exclusive per agent).</li>
+          <li><strong>Camera capture:</strong> snap a receipt to log an expense, or a meal to estimate calories and macros.</li>
+          <li><strong>Gemma 4 model:</strong> a stronger local model option on capable devices.</li>
+          <li><strong>Escalation &amp; remote models:</strong> connect an agent to a remote or OpenAI-compatible endpoint with your own API key.</li>
+          <li><strong>Experimental MCP tools:</strong> early Model Context Protocol support.</li>
+        </ul>
+        <h3 style="margin-top:14px;font-size:1.05rem;">Improved</h3>
+        <ul>
+          <li>Updated Health &amp; Fitness agent, Image Analyzer and Knowledge Base.</li>
+          <li>Redesigned agent chat with smoother animations.</li>
+          <li>Refreshed Nearby Agents and OpenClaw-compatible bot bridge.</li>
+        </ul>
+        <p class="note"><strong>Release status:</strong> Kukku 2.0 (Build 14) is <strong>Apple approved</strong> and set to release on <strong>August 17, 2026</strong>, bringing powerful on-device AI powered by the Gemma 4 model. Feature availability can vary by device memory; calorie, macro and health figures are estimates and not medical advice.</p>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2026 Kukku Me.</p>
+    </footer>
+    <script src="site.js"></script>
+</body>
+</html>

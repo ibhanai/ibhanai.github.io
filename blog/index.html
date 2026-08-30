@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Kukku Blog - Practical insights on private AI, edge deployment, and agent design." />
+  <title>IbhanAi Labs Blog | Private AI and Edge Agents</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@1,6..72,500;1,6..72,600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="../legacy.css" />
+  <style>
+    .blog-shell {
+      display: grid;
+      gap: 18px;
+    }
+
+    .blog-hero {
+      background:
+        radial-gradient(circle at 0% 0%, rgba(199, 230, 242, 0.45), transparent 42%),
+        radial-gradient(circle at 100% 0%, rgba(246, 178, 107, 0.26), transparent 38%),
+        #fff;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: 0 24px 44px rgba(10, 11, 13, 0.08);
+    }
+
+    .blog-hero h1 {
+      font-family: "Fraunces", serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 10px;
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .blog-card {
+      display: grid;
+      gap: 10px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fff;
+      padding: 20px;
+      box-shadow: 0 16px 34px rgba(10, 11, 13, 0.08);
+      text-decoration: none;
+      color: inherit;
+      transition: transform 260ms ease, box-shadow 260ms ease;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 42px rgba(10, 11, 13, 0.12);
+    }
+
+    .blog-card h2 {
+      font-family: "Fraunces", serif;
+      font-size: 1.5rem;
+      line-height: 1.2;
+    }
+
+    .blog-meta {
+      font-size: 0.86rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--sea-dark);
+    }
+
+    .blog-card p {
+      color: rgba(10, 11, 13, 0.72);
+      line-height: 1.55;
+    }
+
+    .tag-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .tag-row span {
+      border-radius: 999px;
+      border: 1px solid rgba(11, 60, 68, 0.22);
+      background: rgba(199, 230, 242, 0.42);
+      color: var(--sea-dark);
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 6px 10px;
+    }
+
+    @media (max-width: 900px) {
+      .blog-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="progress" aria-hidden="true"></div>
+  <div class="glow" aria-hidden="true"></div>
+
+  <header class="nav">
+    <div class="brand">
+      <a href="../index.html" aria-label="Kukku home">
+        <svg class="mark" viewBox="0 0 40 40" fill="none" aria-hidden="true"><ellipse cx="20" cy="20" rx="18" ry="8" stroke="var(--accent)" stroke-width="2.4" transform="rotate(45 20 20)"/><ellipse cx="20" cy="20" rx="18" ry="8" stroke="var(--brass)" stroke-width="2.4" transform="rotate(-45 20 20)"/><circle cx="14.5" cy="20" r="3.4" fill="var(--accent)"/><circle cx="25.5" cy="20" r="3.4" fill="var(--accent)"/><rect x="16" y="18.6" width="8" height="2.8" fill="var(--accent)"/></svg><span class="wm">Ibhan<span class="ai">Ai</span><span class="labs">Labs</span></span>
+      </a>
+    </div>
+    <nav class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="../index.html">Company</a>
+      <a href="./index.html">Blog</a>
+      <a href="../privacy.html">Privacy</a>
+      <a href="../support.html">Support</a>
+    </nav>
+  </header>
+
+  <main class="blog-shell">
+    <section class="blog-hero">
+      <p class="eyebrow">Insights</p>
+      <h1>Kukku Blog</h1>
+      <p class="lede">Practical writing on edge AI product engineering, private agent systems, and architecture patterns for reliable deployment.</p>
+    </section>
+
+    <section class="blog-grid">
+      <a class="blog-card" href="2026-08-17-gemma-on-device.html">
+        <p class="blog-meta">August 17, 2026 · 2 min read</p>
+        <h2>How We Run Google Gemma 4 Fully On-Device in Kukku</h2>
+        <p>Kukku 2.0 ships with Google Gemma 4 running entirely on your iPhone — private by design, offline-capable, powering agents for everyday life.</p>
+        <div class="tag-row">
+          <span>Gemma</span>
+          <span>On-device AI</span>
+          <span>Privacy</span>
+        </div>
+      </a>
+
+      <a class="blog-card" href="2026-03-07-ai-on-edge.html">
+        <p class="blog-meta">March 7, 2026 · 1 min read</p>
+        <h2>AI on the Edge: Why Private, Local-First Inference Matters</h2>
+        <p>How edge deployment improves latency, privacy posture, reliability, and product UX for modern AI applications on mobile and desktop.</p>
+        <div class="tag-row">
+          <span>Edge AI</span>
+          <span>Product Strategy</span>
+          <span>Privacy</span>
+        </div>
+      </a>
+
+      <a class="blog-card" href="2026-03-14-private-agent-patterns.html">
+        <p class="blog-meta">March 14, 2026 · 2 min read</p>
+        <h2>Private Agent Patterns: Building Useful AI Without Leaking Context</h2>
+        <p>A practical pattern library for creating agentic experiences with clear boundaries, local memory, and selective external calls.</p>
+        <div class="tag-row">
+          <span>Agents</span>
+          <span>Architecture</span>
+          <span>Governance</span>
+        </div>
+      </a>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Kukku Me. · <a href="../index.html">Home</a> · <a href="../intro.html">Products &amp; Services</a></p>
+  </footer>
+  <script src="../site.js"></script>
+</body>
+</html>

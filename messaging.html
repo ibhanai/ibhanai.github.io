@@ -1,0 +1,654 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Kukku AI Unified Messaging — a private messaging platform, chatbot, message polisher and AI voice agent that runs on your infrastructure, reads only your approved knowledge, and follows your organisation's communication policy on every message." />
+  <title>Kukku AI Unified Messaging — Private, Policy-Safe Messaging</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@1,6..72,500;1,6..72,600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="legacy.css" />
+  <style>
+    .sol-shell {
+      display: grid;
+      gap: 30px;
+    }
+
+    /* Hero */
+    .sol-hero {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      padding: 42px 34px;
+      background:
+        #fff;
+      box-shadow: 0 26px 50px rgba(10, 11, 13, 0.1);
+      backdrop-filter: blur(4px);
+    }
+
+    .sol-hero h1 {
+      font-family: "SF Pro Rounded", "SF Pro Display", "Fraunces", serif;
+      font-size: clamp(1.5rem, 2.6vw, 2.2rem);
+      line-height: 1.14;
+      font-weight: 700;
+      margin: 12px 0 16px;
+      max-width: none;
+    }
+
+    .sol-hero h1 .sol-em {
+      background: linear-gradient(100deg, var(--sea), var(--sun) 92%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .sol-hero .lede {
+      max-width: 66ch;
+      margin-bottom: 20px;
+    }
+
+    .sol-hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .sol-hero-tags span {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border-radius: 999px;
+      border: 1px solid rgba(11, 60, 68, 0.2);
+      background: rgba(198, 230, 242, 0.6);
+      color: var(--sea-dark);
+      padding: 8px 13px;
+      font-weight: 600;
+    }
+
+    .sol-hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    /* Section heads */
+    .sol-pillar-head {
+      max-width: 66ch;
+      margin-bottom: 22px;
+    }
+
+    .sol-pillar-head .eyebrow {
+      color: var(--sea);
+    }
+
+    .sol-pillar-head h2 {
+      font-family: "SF Pro Rounded", "SF Pro Display", "Fraunces", serif;
+      font-size: clamp(1.7rem, 2.8vw, 2.4rem);
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .sol-pillar-head p {
+      line-height: 1.62;
+      color: rgba(10, 11, 13, 0.72);
+    }
+
+    /* Numbered feature block */
+    .feat {
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 30px;
+      background: #fff;
+      box-shadow: 0 16px 32px rgba(10, 11, 13, 0.06);
+    }
+
+    .feat-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+
+    .feat-num {
+      flex: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      font-family: "Space Grotesk", system-ui, sans-serif;
+      font-weight: 600;
+      font-size: 1.15rem;
+      color: #fff;
+      background: linear-gradient(150deg, var(--sea), var(--sea-dark));
+      box-shadow: 0 10px 20px rgba(11, 60, 68, 0.24);
+    }
+
+    .feat-head h3 {
+      font-family: "SF Pro Rounded", "SF Pro Display", "Fraunces", serif;
+      font-size: clamp(1.2rem, 2vw, 1.55rem);
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .feat > p {
+      line-height: 1.64;
+      color: rgba(10, 11, 13, 0.74);
+      max-width: 76ch;
+      margin-bottom: 18px;
+    }
+
+    .eg-label {
+      font-family: "Space Grotesk", system-ui, sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--sea-dark);
+      margin: 4px 0 10px;
+    }
+
+    .eg-cols {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    ul.eg {
+      list-style: none;
+      display: grid;
+      gap: 9px;
+      margin: 0 0 4px;
+      padding: 0;
+    }
+
+    ul.eg li {
+      position: relative;
+      padding-left: 22px;
+      line-height: 1.56;
+      font-size: 0.95rem;
+      color: rgba(10, 11, 13, 0.78);
+    }
+
+    ul.eg li::before {
+      content: "";
+      position: absolute;
+      left: 3px;
+      top: 0.55em;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: linear-gradient(150deg, var(--sea), var(--sun));
+    }
+
+    .feat-note {
+      margin-top: 18px;
+      border-left: 3px solid var(--sun);
+      background: rgba(246, 178, 107, 0.1);
+      border-radius: 0 12px 12px 0;
+      padding: 12px 16px;
+      line-height: 1.58;
+      font-size: 0.92rem;
+      color: rgba(10, 11, 13, 0.8);
+    }
+
+    .feat-note strong {
+      color: var(--sea-dark);
+    }
+
+    /* Policy band */
+    .sol-band {
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 34px;
+      background:
+        #fff;
+      box-shadow: 0 18px 34px rgba(10, 11, 13, 0.07);
+    }
+
+    .sol-band .svc-points {
+      list-style: none;
+      display: grid;
+      gap: 9px;
+      margin: 16px 0 0;
+      padding: 0;
+      max-width: 74ch;
+    }
+
+    .sol-band .svc-points li {
+      position: relative;
+      padding-left: 22px;
+      line-height: 1.58;
+      color: rgba(10, 11, 13, 0.78);
+    }
+
+    .sol-band .svc-points li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--sea);
+      font-weight: 700;
+    }
+
+    /* Deployment cards */
+    .svc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px;
+    }
+
+    .svc-tile {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 20px;
+      box-shadow: 0 16px 32px rgba(10, 11, 13, 0.07);
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .svc-tile:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 44px rgba(10, 11, 13, 0.12);
+    }
+
+    .svc-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      font-size: 1.5rem;
+      line-height: 1;
+      border-radius: 14px;
+      background: rgba(15, 82, 87, 0.08);
+    }
+
+    .svc-tile h3 {
+      font-family: "SF Pro Rounded", "SF Pro Display", "Fraunces", serif;
+      font-size: 1.08rem;
+      font-weight: 700;
+    }
+
+    .svc-tile p {
+      line-height: 1.55;
+      color: rgba(10, 11, 13, 0.72);
+      font-size: 0.94rem;
+    }
+
+    /* Audience */
+    .aud-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .aud-grid span {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px 16px;
+      font-weight: 600;
+      color: var(--sea-dark);
+      box-shadow: 0 10px 22px rgba(10, 11, 13, 0.05);
+    }
+
+    /* CTA */
+    .sol-cta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+      background:
+        #fff;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: 0 18px 34px rgba(10, 11, 13, 0.08);
+    }
+
+    .sol-cta h2 {
+      font-family: "SF Pro Rounded", "SF Pro Display", "Fraunces", serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .sol-cta p {
+      color: rgba(10, 11, 13, 0.72);
+      max-width: 60ch;
+      line-height: 1.6;
+    }
+
+    .sol-cta-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(18px) scale(0.99);
+      transition: opacity 620ms ease, transform 620ms ease;
+    }
+
+    [data-reveal].visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    @media (max-width: 720px) {
+      .sol-cta {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      [data-reveal] {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+  <!-- SEO:start -->
+  <link rel="canonical" href="https://ibhanai.com/messaging.html" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#1f6f78" />
+  <meta name="author" content="IbhanAi Labs" />
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="IbhanAi Labs" />
+  <meta property="og:title" content="Kukku AI Unified Messaging — Private, Policy-Safe Messaging" />
+  <meta property="og:description" content="Kukku AI Unified Messaging — a private messaging platform, chatbot, message polisher and AI voice agent that runs on your infrastructure, reads only your approved knowledge, and follows your organisation&#x27;s communication policy on every message." />
+  <meta property="og:url" content="https://ibhanai.com/messaging.html" />
+  <meta property="og:image" content="https://ibhanai.com/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Kukku AI Unified Messaging — Private, Policy-Safe Messaging" />
+  <meta name="twitter:description" content="Kukku AI Unified Messaging — a private messaging platform, chatbot, message polisher and AI voice agent that runs on your infrastructure, reads only your approved knowledge, and follows your organisation&#x27;s communication policy on every message." />
+  <meta name="twitter:image" content="https://ibhanai.com/og-image.png" />
+  <!-- Icons -->
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <!-- SEO:end -->
+</head>
+<body>
+  <div id="progress" aria-hidden="true"></div>
+  <div class="glow" aria-hidden="true"></div>
+
+  <header class="nav">
+    <div class="brand">
+      <a href="index.html" aria-label="Kukku home">
+        <svg class="mark" viewBox="0 0 40 40" fill="none" aria-hidden="true"><ellipse cx="20" cy="20" rx="18" ry="8" stroke="var(--accent)" stroke-width="2.4" transform="rotate(45 20 20)"/><ellipse cx="20" cy="20" rx="18" ry="8" stroke="var(--brass)" stroke-width="2.4" transform="rotate(-45 20 20)"/><circle cx="14.5" cy="20" r="3.4" fill="var(--accent)"/><circle cx="25.5" cy="20" r="3.4" fill="var(--accent)"/><rect x="16" y="18.6" width="8" height="2.8" fill="var(--accent)"/></svg><span class="wm">Ibhan<span class="ai">Ai</span><span class="labs">Labs</span></span>
+      </a>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="engineering.html">Engineering</a>
+      <a href="platform.html" aria-current="page">Products</a>
+      <a href="solutions.html">Solutions</a>
+      <a href="services.html">Services</a>
+      <a href="blog/">Blog</a>
+      <a class="nav-cta" href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main class="sol-shell">
+    <!-- HERO -->
+    <section class="sol-hero" data-reveal>
+      <canvas id="hero-canvas" aria-hidden="true"></canvas>
+            <div class="sol-hero-copy">
+      <p class="eyebrow">IbhanAi Labs · Unified Messaging</p>
+      <h1>The AI Unified Messaging platform that <span class="sol-em">speaks your organisation's language</span> — and follows its rules.</h1>
+      <p class="lede">
+        Your staff know what to say — they just shouldn't have to paste sensitive information into a public AI. Kukku lets
+        them dictate, search your own knowledge, and reach people by message or voice — every word following your policy,
+        on your servers or in the cloud.
+      </p>
+      <div class="sol-hero-tags">
+        <span>Private chatbot</span>
+        <span>Policy-safe messaging</span>
+        <span>AI voice, both ways</span>
+        <span>On-premise or cloud</span>
+      </div>
+      <div class="sol-hero-cta">
+        <a class="button" href="#contact">Book a demo</a>
+        <a class="ghost" href="#how">See it in action</a>
+      </div>
+      </div>
+      <div class="hero-atom" aria-hidden="true"><div class="atom"><div class="orbit o1"><div class="spin"><i class="e e1"></i></div></div><div class="orbit o2"><div class="spin"><i class="e e2"></i></div></div><div class="orbit o3"><div class="spin"><i class="e e3"></i></div></div><div class="core"></div></div></div>
+    </section>
+
+    <!-- FOUR THINGS -->
+    <section id="how" class="section" data-reveal data-delay="60">
+      <div class="sol-pillar-head">
+        <p class="eyebrow">Four things Kukku does — in plain language</p>
+        <h2>From a rough note to a policy-safe message — in seconds</h2>
+        <p>It meets your people where they already work, uses only your organisation's approved knowledge, speaks and
+          listens on voice calls, and gives everyone a private chatbot that never leaks a word.</p>
+      </div>
+
+      <div class="sol-shell" style="gap:16px">
+        <!-- 1 -->
+        <div class="feat">
+          <div class="feat-head">
+            <span class="feat-num" aria-hidden="true">1</span>
+            <h3>It listens to how your people already work — dictation, writing, even paper</h3>
+          </div>
+          <p>However your people capture information — talking, typing shorthand, or writing on paper — Kukku accepts it
+            and turns it into a clear, professional record.</p>
+          <p class="eg-label">Examples</p>
+          <ul class="eg">
+            <li>A doctor dictates the ward round on their phone. Kukku writes the family SMS and the EMR entry, in the right tone for each.</li>
+            <li>A nurse snaps a photo of the handwritten admission interview. Kukku reads it, structures it into chief complaint, medications, allergies, and family concerns, and adds it to the patient record.</li>
+            <li>A claims analyst jots two lines of internal shorthand. Kukku produces the policyholder update — with the sensitive numbers automatically kept out.</li>
+            <li>A care worker types a quick note at the end of a shift. Kukku prepares the family update and the shift-handover message in one go.</li>
+          </ul>
+          <p class="feat-note"><strong>Guardrails first.</strong> Everything is checked against your policy before it goes anywhere. If it can't be said — bad news over SMS, a settlement figure in text, an identifier where it doesn't belong — Kukku flags it and asks for a human decision.</p>
+        </div>
+
+        <!-- 2 -->
+        <div class="feat">
+          <div class="feat-head">
+            <span class="feat-num" aria-hidden="true">2</span>
+            <h3>It searches your organisation's own knowledge — not the whole internet</h3>
+          </div>
+          <p>Your protocols, playbooks, leaflets, and approved glossary already exist as documents on someone's drive.
+            Kukku uses only those — so every message stays inside what your organisation actually approves.</p>
+          <p class="eg-label">Examples</p>
+          <ul class="eg">
+            <li>A junior clinician writes to a family about a post-op recovery. Kukku pulls the approved paracetamol and NSAID guidance and phrases it the way your hospital says it should be phrased.</li>
+            <li>A claims agent explains the next step. Kukku uses your company's own claims process document — not something a generic AI made up.</li>
+            <li>A vet dictates aftercare for a pet owner. Kukku uses your clinic's own dental and pain-relief protocols.</li>
+            <li>A new team member sends their first family update. Kukku's suggestions match what your senior staff would write — because it's reading from the same house guide.</li>
+          </ul>
+          <p class="feat-note"><strong>No IT project.</strong> You edit the glossary and upload new policy documents through a simple screen. No AI training. It's live for the next message.</p>
+        </div>
+
+        <!-- 3 -->
+        <div class="feat">
+          <div class="feat-head">
+            <span class="feat-num" aria-hidden="true">3</span>
+            <h3>It speaks and listens — voice calls, both ways</h3>
+          </div>
+          <p>Not everyone reads SMS. Kukku uses your voice-agent platform to speak the message — and to answer when people
+            call in.</p>
+          <div class="eg-cols">
+            <div>
+              <p class="eg-label">Outbound — Kukku calls them</p>
+              <ul class="eg">
+                <li>An elderly daughter is called by an AI voice that gently updates her, in Hindi, about her mother's day on the ward.</li>
+                <li>A pet owner receives a voice call in the evening with the day's recovery update — no app to install.</li>
+                <li>A policyholder is called back in their own language with a claim status they can understand.</li>
+              </ul>
+            </div>
+            <div>
+              <p class="eg-label">Inbound — they call Kukku</p>
+              <ul class="eg">
+                <li>A family member calls the hospital's status line at 2 a.m. and hears the latest approved update the doctor saved that afternoon — instead of interrupting the night shift.</li>
+                <li>A policyholder calls in and the voice agent answers with the most recent claim status — no menu tree, no wait.</li>
+                <li>A relative asks a follow-up question — the voice agent knows what was sent by SMS earlier that day and speaks consistently.</li>
+              </ul>
+            </div>
+          </div>
+          <p class="feat-note"><strong>Same policy, every channel.</strong> If it can't be sent as text, it isn't spoken either. Nothing goes out and nothing is spoken without a human having approved it once.</p>
+        </div>
+
+        <!-- 4 -->
+        <div class="feat">
+          <div class="feat-head">
+            <span class="feat-num" aria-hidden="true">4</span>
+            <h3>It gives your staff a private chatbot — your knowledge, your servers, no data ever leaves</h3>
+          </div>
+          <p>Your people already use public chatbots to draft and look things up — pasting patient details, claim
+            numbers, and internal policies into someone else's cloud. Kukku gives them a private chatbot instead — on your
+            infrastructure, reading only your approved knowledge, never sending a word outside your walls.</p>
+          <p class="eg-label">Examples</p>
+          <ul class="eg">
+            <li>A nurse asks: "What's our policy for paracetamol dosing in over-65s?" — and gets your hospital's own protocol, cited, not a generic answer scraped from the internet.</li>
+            <li>A claims analyst pastes a rough internal note and asks: "How should I phrase this for the policyholder?" — the chatbot drafts it inside Kukku, ready for the same approval and audit flow.</li>
+            <li>A junior doctor asks: "Summarise everything we've told this patient's family in the last 48 hours" — the chatbot pulls from Kukku's own message record, not any external system.</li>
+            <li>A new team member asks: "What tone do we use with bereaved families?" — answered from your organisation's own communication playbook.</li>
+            <li>A care manager asks: "Which residents haven't had a family update this week?" — the chatbot queries Kukku directly, no data leaves the site.</li>
+          </ul>
+          <p class="feat-note"><strong>The same AI that powers your outbound messages powers the chatbot</strong> — so tone, terminology, and compliance boundaries are identical whether staff are drafting a message, summarising a thread, or just asking a question. Staff stop pasting sensitive information into public chatbots, and every question and answer can be audited.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- POLICY BAND -->
+    <section class="sol-band" data-reveal data-delay="60">
+      <div class="sol-pillar-head" style="margin-bottom:0">
+        <p class="eyebrow">Compliance, built in</p>
+        <h2>Every message follows your company policy — automatically</h2>
+        <p>You write your communication rules once — Kukku enforces them on every message, every call, every summary, and
+          every chatbot answer, and shows the person approving exactly which rule was applied. Nothing gets out unless the
+          guardrails pass and a human clicks approve.</p>
+      </div>
+      <ul class="svc-points">
+        <li>"Never send settlement figures over SMS"</li>
+        <li>"Always keep a grade-6 reading level for family updates"</li>
+        <li>"No diagnosis over text — offer a callback instead"</li>
+        <li>"Verify consent before sending anything"</li>
+      </ul>
+      <p style="margin-top:16px;line-height:1.62;color:rgba(10,11,13,0.74);max-width:74ch">You also see a complete record
+        of everything sent, everything spoken, every question asked, and every knowledge document the AI used — for audit,
+        review, or dispute.</p>
+    </section>
+
+    <!-- DEPLOYMENT -->
+    <section class="section" data-reveal data-delay="60">
+      <div class="sol-pillar-head">
+        <p class="eyebrow">Deployment</p>
+        <h2>Runs where you need it to — public, private, or both</h2>
+        <p>Kukku is built for regulated environments where your data cannot leave the building. And the AI models can be
+          tuned to your organisation — your terminology, your tone, your typical scenarios — so suggestions read like they
+          came from your senior staff.</p>
+      </div>
+      <div class="svc-grid">
+        <article class="svc-tile">
+          <span class="svc-icon" aria-hidden="true">🏥</span>
+          <h3>Private / on-premise</h3>
+          <p>The AI models, voice agents, private chatbot, knowledge base, and every message live entirely on your servers. Nothing leaves.</p>
+        </article>
+        <article class="svc-tile">
+          <span class="svc-icon" aria-hidden="true">☁️</span>
+          <h3>Public / managed cloud</h3>
+          <p>For less-sensitive work, use frontier models via API for the highest language quality.</p>
+        </article>
+        <article class="svc-tile">
+          <span class="svc-icon" aria-hidden="true">🔀</span>
+          <h3>Mix and match, per use case</h3>
+          <p>Clinical conversations on-premise; internal team notifications in the cloud — all under the same compliance policy.</p>
+        </article>
+        <article class="svc-tile">
+          <span class="svc-icon" aria-hidden="true">🤖</span>
+          <h3>A private chatbot for staff</h3>
+          <p>The same model that drafts your outbound messages answers your team's day-to-day questions, entirely inside your infrastructure.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- AUDIENCE -->
+    <section class="section" data-reveal data-delay="60">
+      <div class="sol-pillar-head">
+        <p class="eyebrow">Who Kukku is for</p>
+        <h2>Any organisation where a badly-worded message costs trust, time, or money</h2>
+        <p>…and any organisation whose staff are already using public chatbots to get their work done, but shouldn't be.
+          If your compliance team has ever had to send a "please don't paste patient information into ChatGPT" email —
+          Kukku is the fix. Same convenience for your staff, none of the risk.</p>
+      </div>
+      <div class="aud-grid">
+        <span>🏥 Hospitals &amp; clinics</span>
+        <span>🏡 Aged care &amp; home care</span>
+        <span>🛡️ Insurance &amp; claims teams</span>
+        <span>🐾 Veterinary practices</span>
+        <span>🏦 Banks &amp; financial services</span>
+        <span>🏛️ Government &amp; public services</span>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="contact" class="sol-cta" data-reveal data-delay="60">
+      <div>
+        <p class="eyebrow">Ready to see it with your own examples?</p>
+        <h2>Bring us three real conversations</h2>
+        <p>One you find hard to write, one you get too many phone calls about, and one a staff member would normally have
+          asked a public chatbot about. We'll show you all three, handled through Kukku, in a 20-minute walkthrough.</p>
+      </div>
+      <div class="sol-cta-actions">
+        <a class="button" href="mailto:support@ibhanai.com?subject=Kukku%20AI%20Unified%20Messaging%20—%20demo">Book a demo</a>
+        <a class="ghost" href="mailto:support@ibhanai.com?subject=Kukku%20AI%20Unified%20Messaging%20—%20pilot">Start a pilot</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 IbhanAi Labs. · <a href="platform.html">Platform Stack</a> · <a href="solutions.html">Solutions</a> · <a href="blog/">Blog</a> · <a href="https://www.linkedin.com/company/kukku-ai-solutions" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+  </footer>
+
+  <script>
+    const revealEls = document.querySelectorAll("[data-reveal]");
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const setVisible = (el) => {
+      const delay = Number(el.dataset.delay || "0");
+      if (delay) el.style.transitionDelay = `${delay}ms`;
+      el.classList.add("visible");
+    };
+
+    if (!reduceMotion && "IntersectionObserver" in window) {
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisible(entry.target);
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: "0px 0px -6% 0px" });
+      revealEls.forEach((el) => obs.observe(el));
+    } else {
+      revealEls.forEach((el) => setVisible(el));
+    }
+  </script>
+  <script src="site.js"></script>
+</body>
+</html>

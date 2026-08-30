@@ -1,0 +1,14 @@
+{
+  "name": "IbhanAi Labs",
+  "short_name": "IbhanAi",
+  "description": "Private, on-device and on-premise AI — the IbhanAi personal AI app, voice agents, unified messaging, and applied industry AI.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1f6f78",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}

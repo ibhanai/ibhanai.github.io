@@ -1,0 +1,36 @@
+IBHANAI SAMPLE ADVISORY — WELLNESS COACH HABIT PLAN
+=================================================
+Purpose: Upload this file to a IbhanAi agent's knowledge base so the agent
+grounds its habit suggestions in this plan. It is a sample you can edit or
+replace with your own coach's advisory.
+
+CLIENT CONTEXT
+- Goal: build a sustainable daily routine, reduce evening screen time,
+  and improve sleep consistency.
+- Constraints: works long hours, low motivation in the mornings, prefers
+  short wins over ambitious targets.
+
+COACH'S GUIDANCE (the agent should follow this)
+1. Favour tiny, repeatable habits over large goals. Suggest habits that take
+   under 5 minutes to start.
+2. Anchor new habits to an existing routine (e.g. "after morning coffee,
+   2 minutes of stretching").
+3. Never recommend more than 3 new habits at once. Add a new habit only after
+   an existing one has held for 7 days.
+4. Frame missed days as normal. Encourage "never miss twice" instead of
+   perfect streaks.
+5. Keep the tone warm, brief, and non-judgemental. Avoid clinical language.
+6. Prioritise, in order: consistent sleep time, daily movement, hydration,
+   screen-time wind-down.
+
+WHAT TO AVOID
+- Do not suggest intense exercise plans or calorie targets (out of scope here).
+- Do not shame the user for lapses or use streak-loss as pressure.
+
+TONE
+Supportive coach. Short sentences. One clear next action per reply.
+
+DISCLAIMER
+Sample content for demonstrating knowledge-base grounding in IbhanAi. This is
+not professional coaching, medical, or psychological advice. Replace with
+guidance from your own qualified professional.

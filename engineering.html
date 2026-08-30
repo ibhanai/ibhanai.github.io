@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="IbhanAi Labs Research — AI engineering capabilities: LLM evaluation, training and fine-tuning, optimization and compression, observability, multi-modal and computer vision, retrieval and agents, safety and guardrails, and private model serving." />
+  <title>IbhanAi Labs — AI Engineering</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@1,6..72,500;1,6..72,600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="legacy.css" />
+  <style>
+    .sol-shell {
+      display: grid;
+      gap: 30px;
+    }
+
+    /* Hero */
+    .sol-hero {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      padding: 42px 34px;
+      background:
+        #fff;
+      box-shadow: 0 26px 50px rgba(10, 11, 13, 0.1);
+      backdrop-filter: blur(4px);
+    }
+
+    .sol-hero h1 {
+      font-family: "SF Pro Rounded", "SF Pro Display", "Fraunces", serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.06;
+      font-weight: 700;
+      margin: 12px 0 16px;
+      max-width: 380px;
+      min-height: 2.2em;
+    }
+
+    .sol-rot {
+      color: var(--sea-dark);
+      display: inline-block;
+      transition: opacity 220ms ease, transform 220ms ease;
+      background: linear-gradient(100deg, var(--sea), var(--sun) 92%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .sol-rot.is-changing {
+      opacity: 0.15;
+      transform: translateY(0.16em);
+    }
+
+    .sol-hero .lede {
+      max-width: 60ch;
+      margin-bottom: 20px;
+    }
+
+    .sol-hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .sol-hero-tags span {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border-radius: 999px;
+      border: 1px solid rgba(11, 60, 68, 0.2);
+      background: rgba(198, 230, 242, 0.6);
+      color: var(--sea-dark);
+      padding: 8px 13px;
+      font-weight: 600;
+    }
+
+    /* Pillar heading */
+    .sol-pillar-head {
+      max-width: 62ch;
+      margin-bottom: 22px;
+    }
+
+    .sol-pillar-head h2 {
+      font-family: "SF Pro Rounded", "SF Pro Display", "Fraunces", serif;
+      font-size: clamp(1.7rem, 2.8vw, 2.4rem);
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .sol-pillar-head p {
+      line-height: 1.62;
+      color: rgba(10, 11, 13, 0.72);
+    }
+
+    /* Product tiles grid */
+    .svc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px;
+    }
+
+    .svc-tile {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 20px;
+      box-shadow: 0 16px 32px rgba(10, 11, 13, 0.07);
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .svc-tile:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 44px rgba(10, 11, 13, 0.12);
+    }
+
+    a.svc-tile {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .svc-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      font-size: 1.5rem;
+      line-height: 1;
+      border-radius: 14px;
+      background: rgba(15, 82, 87, 0.08);
+    }
+
+    .svc-tile h3 {
+      font-family: "SF Pro Rounded", "SF Pro Display", "Fraunces", serif;
+      font-size: 1.08rem;
+      font-weight: 700;
+    }
+
+    .svc-tile p {
+      line-height: 1.55;
+      color: rgba(10, 11, 13, 0.72);
+      font-size: 0.94rem;
+      flex: 1;
+    }
+
+    .svc-points {
+      list-style: none;
+      display: grid;
+      gap: 7px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .svc-points li {
+      position: relative;
+      padding-left: 18px;
+      line-height: 1.5;
+      font-size: 0.9rem;
+      color: rgba(10, 11, 13, 0.72);
+    }
+
+    .svc-points li::before {
+      content: "";
+      position: absolute;
+      left: 2px;
+      top: 0.52em;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--sea);
+    }
+
+    .status {
+      align-self: flex-start;
+      font-family: "Space Grotesk", system-ui, sans-serif;
+      font-size: 0.66rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      padding: 4px 9px;
+      border-radius: 999px;
+    }
+
+    .status--soon {
+      color: var(--sea-dark);
+      background: rgba(31, 111, 120, 0.12);
+      border: 1px solid rgba(31, 111, 120, 0.22);
+    }
+
+    .status--live {
+      color: #1f6f3f;
+      background: rgba(52, 168, 108, 0.16);
+      border: 1px solid rgba(52, 168, 108, 0.4);
+    }
+
+    /* CTA */
+    .sol-cta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+      background:
+        #fff;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: 0 18px 34px rgba(10, 11, 13, 0.08);
+    }
+
+    .sol-cta h2 {
+      font-family: "SF Pro Rounded", "SF Pro Display", "Fraunces", serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .sol-cta p {
+      color: rgba(10, 11, 13, 0.72);
+      max-width: 52ch;
+      line-height: 1.6;
+    }
+
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(18px) scale(0.99);
+      transition: opacity 620ms ease, transform 620ms ease;
+    }
+
+    [data-reveal].visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    @media (max-width: 720px) {
+      .sol-cta {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      [data-reveal] {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+  <!-- SEO:start -->
+  <link rel="canonical" href="https://ibhanai.com/engineering.html" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#1f6f78" />
+  <meta name="author" content="IbhanAi Labs" />
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="IbhanAi Labs" />
+  <meta property="og:title" content="IbhanAi Labs — AI Engineering" />
+  <meta property="og:description" content="AI engineering capabilities: LLM evaluation, training and fine-tuning, optimization, observability, multi-modal and computer vision, retrieval and agents, safety and guardrails, and private model serving." />
+  <meta property="og:url" content="https://ibhanai.com/engineering.html" />
+  <meta property="og:image" content="https://ibhanai.com/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="IbhanAi Labs — AI Engineering" />
+  <meta name="twitter:description" content="AI engineering capabilities: evaluation, training, optimization, observability, multi-modal, retrieval, safety, and private serving." />
+  <meta name="twitter:image" content="https://ibhanai.com/og-image.png" />
+  <!-- Icons -->
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <!-- SEO:end -->
+</head>
+<body>
+  <div id="progress" aria-hidden="true"></div>
+  <div class="glow" aria-hidden="true"></div>
+
+  <header class="nav">
+    <div class="brand">
+      <a href="index.html" aria-label="Kukku home">
+        <svg class="mark" viewBox="0 0 40 40" fill="none" aria-hidden="true"><ellipse cx="20" cy="20" rx="18" ry="8" stroke="var(--accent)" stroke-width="2.4" transform="rotate(45 20 20)"/><ellipse cx="20" cy="20" rx="18" ry="8" stroke="var(--brass)" stroke-width="2.4" transform="rotate(-45 20 20)"/><circle cx="14.5" cy="20" r="3.4" fill="var(--accent)"/><circle cx="25.5" cy="20" r="3.4" fill="var(--accent)"/><rect x="16" y="18.6" width="8" height="2.8" fill="var(--accent)"/></svg><span class="wm">Ibhan<span class="ai">Ai</span><span class="labs">Labs</span></span>
+      </a>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="engineering.html" aria-current="page">Engineering</a>
+      <a href="platform.html">Products</a>
+      <a href="solutions.html">Solutions</a>
+      <a href="services.html">Services</a>
+      <a href="blog/">Blog</a>
+      <a class="nav-cta" href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main class="sol-shell">
+    <!-- HERO -->
+    <section class="sol-hero" data-reveal>
+      <canvas id="hero-canvas" aria-hidden="true"></canvas>
+            <div class="sol-hero-copy">
+      <p class="eyebrow">IbhanAi Labs · Engineering</p>
+      <h1><span class="sol-rot" data-words="AI, engineered|Prototype to production|Built for your ground">AI, engineered end to end</span></h1>
+      <p class="lede">
+        The research and engineering behind every product we ship. We <strong>evaluate</strong>, <strong>train</strong>,
+        <strong>optimize</strong> and <strong>harden</strong> models — then serve them on-device, in your own cloud, or
+        on-premise.
+      </p>
+      <div class="sol-hero-tags">
+        <span>Evaluate</span>
+        <span>Train</span>
+        <span>Optimize</span>
+        <span>Deploy</span>
+        <span>Observe</span>
+      </div>
+      </div>
+      <div class="hero-atom" aria-hidden="true"><div class="atom"><div class="orbit o1"><div class="spin"><i class="e e1"></i></div></div><div class="orbit o2"><div class="spin"><i class="e e2"></i></div></div><div class="orbit o3"><div class="spin"><i class="e e3"></i></div></div><div class="core"></div></div></div>
+    </section>
+
+    <!-- CAPABILITIES -->
+    <section id="capabilities" class="section" data-reveal data-delay="60">
+      <div class="sol-pillar-head">
+        <p class="eyebrow">Capabilities</p>
+        <h2>What we engineer</h2>
+        <p>Nine areas of AI engineering work, applied end-to-end — from measuring model quality to serving hardened models in
+          your environment.</p>
+      </div>
+      <div class="svc-grid">
+        <div class="svc-tile">
+          <span class="svc-icon" aria-hidden="true">🧪</span>
+          <h3>LLM Evaluation &amp; Benchmarking</h3>
+          <p>Know how a model behaves before it ships.</p>
+          <ul class="svc-points">
+            <li>Evaluation harnesses &amp; task suites</li>
+            <li>Quality and safety benchmarks</li>
+            <li>Regression tests across model versions</li>
+          </ul>
+        </div>
+        <div class="svc-tile">
+          <span class="svc-icon" aria-hidden="true">🎯</span>
+          <h3>Training &amp; Fine-tuning</h3>
+          <p>Adapt open models to your data and your task.</p>
+          <ul class="svc-points">
+            <li>Domain fine-tuning &amp; instruction tuning</li>
+            <li>Distillation into smaller models</li>
+            <li>Dataset curation from your sources</li>
+          </ul>
+        </div>
+        <div class="svc-tile">
+          <span class="svc-icon" aria-hidden="true">🗜️</span>
+          <h3>Optimization &amp; Compression</h3>
+          <p>Make models small and fast enough to run anywhere.</p>
+          <ul class="svc-points">
+            <li>Quantization &amp; pruning</li>
+            <li>On-device and edge optimization</li>
+            <li>Latency and memory profiling</li>
+          </ul>
+        </div>
+        <div class="svc-tile">
+          <span class="svc-icon" aria-hidden="true">📈</span>
+          <h3>Observability &amp; Monitoring</h3>
+          <p>Keep deployed models healthy in production.</p>
+          <ul class="svc-points">
+            <li>Inference tracing &amp; logging</li>
+            <li>Drift and quality tracking</li>
+            <li>Alerting on regressions</li>
+          </ul>
+        </div>
+        <div class="svc-tile">
+          <span class="svc-icon" aria-hidden="true">👁️</span>
+          <h3>Multi-Modal &amp; Computer Vision</h3>
+          <p>For the problems that go beyond text.</p>
+          <ul class="svc-points">
+            <li>Vision and image understanding</li>
+            <li>Speech and audio models</li>
+            <li>Combined multi-modal pipelines</li>
+          </ul>
+        </div>
+        <div class="svc-tile">
+          <span class="svc-icon" aria-hidden="true">🔎</span>
+          <h3>Retrieval &amp; Agents</h3>
+          <p>Ground models in your own knowledge and tools.</p>
+          <ul class="svc-points">
+            <li>Private retrieval over your data</li>
+            <li>Tool-using, multi-step agents</li>
+            <li>Model Context Protocol integrations</li>
+          </ul>
+        </div>
+        <div class="svc-tile">
+          <span class="svc-icon" aria-hidden="true">🛡️</span>
+          <h3>Safety &amp; Guardrails</h3>
+          <p>Keep private AI inside your rules.</p>
+          <ul class="svc-points">
+            <li>Policy enforcement &amp; content filters</li>
+            <li>Alignment and refusal tuning</li>
+            <li>Red-teaming and abuse testing</li>
+          </ul>
+        </div>
+        <div class="svc-tile">
+          <span class="svc-icon" aria-hidden="true">🧬</span>
+          <h3>Data &amp; Synthetic Data</h3>
+          <p>The fuel behind evaluation and training.</p>
+          <ul class="svc-points">
+            <li>Curation and cleaning</li>
+            <li>Labelling and annotation</li>
+            <li>Synthetic data generation</li>
+          </ul>
+        </div>
+        <div class="svc-tile">
+          <span class="svc-icon" aria-hidden="true">🚀</span>
+          <h3>Model Serving &amp; MLOps</h3>
+          <p>The bridge from lab bench to your ground.</p>
+          <ul class="svc-points">
+            <li>Serving in your own network</li>
+            <li>Autoscaling and cost control</li>
+            <li>Model CI/CD and versioning</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- FULL CYCLE -->
+    <section id="cycle" class="section" data-reveal data-delay="60">
+      <div class="sol-pillar-head">
+        <p class="eyebrow">The full cycle</p>
+        <h2>How the lab feeds the platform</h2>
+        <p>These capabilities aren't standalone services — they run end-to-end so research turns into products and
+          industry solutions you can actually deploy.</p>
+      </div>
+      <div class="svc-grid">
+        <div class="svc-tile">
+          <span class="svc-icon" aria-hidden="true">1</span>
+          <h3>Research &amp; Evaluate</h3>
+          <p>Select, benchmark and evaluate candidate models against your task, quality and safety bar.</p>
+        </div>
+        <div class="svc-tile">
+          <span class="svc-icon" aria-hidden="true">2</span>
+          <h3>Train &amp; Optimize</h3>
+          <p>Fine-tune, distill and compress until the model fits the device and the data it has to run on.</p>
+        </div>
+        <div class="svc-tile">
+          <span class="svc-icon" aria-hidden="true">3</span>
+          <h3>Deploy &amp; Observe</h3>
+          <p>Serve it in your own environment, add guardrails, and monitor quality and drift once it's live.</p>
+        </div>
+        <div class="svc-tile">
+          <span class="svc-icon" aria-hidden="true">4</span>
+          <h3>Productize &amp; Apply</h3>
+          <p>Ship it as part of the <a href="platform.html">platform stack</a> and into
+            <a href="solutions.html">industry solutions</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT CTA -->
+    <section id="contact" class="sol-cta" data-reveal data-delay="60">
+      <div>
+        <p class="eyebrow">Work with us</p>
+        <h2>Have a model or a problem to take through the cycle?</h2>
+        <p>Tell us where you are — a model to evaluate, data to fine-tune on, or something to run in your own network — and we'll
+          scope a focused pilot.</p>
+      </div>
+      <a class="button" href="mailto:support@ibhanai.com?subject=IbhanAi%20Labs%20—%20AI%20Engineering%20enquiry">Talk to IbhanAi Labs</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 IbhanAi Labs. · <a href="index.html">Back to Home</a> · <a href="solutions.html">Solutions</a> · <a href="blog/">Blog</a> · <a href="https://www.linkedin.com/company/kukku-ai-solutions" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+  </footer>
+
+  <script>
+    const revealEls = document.querySelectorAll("[data-reveal]");
+    const rotatingWord = document.querySelector(".sol-rot[data-words]");
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const setVisible = (el) => {
+      const delay = Number(el.dataset.delay || "0");
+      if (delay) el.style.transitionDelay = `${delay}ms`;
+      el.classList.add("visible");
+    };
+
+    if (!reduceMotion && "IntersectionObserver" in window) {
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisible(entry.target);
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.14, rootMargin: "0px 0px -8% 0px" });
+      revealEls.forEach((el) => obs.observe(el));
+    } else {
+      revealEls.forEach((el) => setVisible(el));
+    }
+
+    if (rotatingWord && !reduceMotion) {
+      const words = (rotatingWord.dataset.words || "").split("|").map((w) => w.trim()).filter(Boolean);
+      let i = 0;
+      if (words.length > 1) {
+        setInterval(() => {
+          rotatingWord.classList.add("is-changing");
+          setTimeout(() => {
+            i = (i + 1) % words.length;
+            rotatingWord.textContent = words[i];
+            rotatingWord.classList.remove("is-changing");
+          }, 220);
+        }, 2400);
+      }
+    }
+  </script>
+  <script src="site.js"></script>
+</body>
+</html>

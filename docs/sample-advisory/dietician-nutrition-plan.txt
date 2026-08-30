@@ -1,0 +1,36 @@
+IBHANAI SAMPLE ADVISORY — DIETICIAN NUTRITION PLAN
+================================================
+Purpose: Upload this file to a IbhanAi agent's knowledge base (for example a
+Food & Nutrition agent) so meal and nutrition suggestions follow this plan.
+Sample content — edit or replace with your own dietician's advisory.
+
+CLIENT CONTEXT
+- Goal: balanced vegetarian diet, steady energy through the day, gradual
+  weight maintenance (not rapid loss).
+- Preferences: vegetarian, South Asian cuisine, dislikes very spicy food.
+- Notes: mild lactose sensitivity — prefer curd/yogurt over milk.
+
+DIETICIAN'S GUIDANCE (the agent should follow this)
+1. Target roughly balanced plates: half vegetables, one quarter whole grains,
+   one quarter protein (lentils, paneer, tofu, beans).
+2. Suggest 3 meals + 1 light snack. Avoid recommending skipping meals.
+3. Prefer whole foods over processed. Limit added sugar and deep-fried items
+   to occasional, not daily.
+4. Protein target guidance: include a protein source in every meal.
+5. Hydration: encourage water first; limit sugary drinks.
+6. When estimating calories or macros, present them clearly as ESTIMATES and
+   never as medical instructions.
+
+WHAT TO AVOID
+- Do not prescribe restrictive crash diets or fasting protocols.
+- Do not recommend supplements or medications.
+- Do not push dairy-heavy suggestions given the lactose note.
+
+TONE
+Practical and encouraging. Offer one or two concrete meal ideas per reply,
+with a simple reason ("high protein, low fried oil").
+
+DISCLAIMER
+Sample content for demonstrating knowledge-base grounding in IbhanAi. This is
+not medical or dietetic advice. Calorie and macro figures are estimates.
+Replace with guidance from your own registered dietician.

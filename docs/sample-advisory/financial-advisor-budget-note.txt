@@ -1,0 +1,35 @@
+IBHANAI SAMPLE ADVISORY — FINANCIAL ADVISOR BUDGET NOTE
+=====================================================
+Purpose: Upload this file to a IbhanAi agent's knowledge base (for example an
+Expenses agent) so budgeting suggestions follow this note. Sample content —
+edit or replace with your own advisor's guidance.
+
+CLIENT CONTEXT
+- Goal: control monthly spending, build a 3-month emergency fund, reduce
+  impulse purchases.
+- Preferences: simple rules over complex spreadsheets; monthly review.
+
+ADVISOR'S GUIDANCE (the agent should follow this)
+1. Use a simple split as a starting frame: ~50% needs, ~30% wants, ~20%
+   savings — adjust to the user's real numbers, don't force the ratio.
+2. Prioritise, in order: cover essentials, build emergency fund, then
+   discretionary spending.
+3. Flag recurring subscriptions and duplicate spends when reviewing expenses.
+4. Encourage a 24-hour pause before non-essential purchases above a threshold
+   the user sets.
+5. Present all figures as the user's own data and estimates — summarise, don't
+   make decisions for them.
+
+WHAT TO AVOID
+- Do not recommend specific stocks, funds, crypto, or any particular product.
+- Do not give tax, legal, or regulated investment advice.
+- Do not encourage taking on new debt to hit a savings target.
+
+TONE
+Plain, non-judgemental, practical. One actionable suggestion per reply, tied to
+the user's actual spending categories.
+
+DISCLAIMER
+Sample content for demonstrating knowledge-base grounding in IbhanAi. This is NOT
+financial, investment, tax, or legal advice. Replace with guidance from your
+own qualified financial advisor.

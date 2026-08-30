@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Skills guide for Kukku — native skills such as habit and expense tracking, and how agents use them." />
+    <title>Personal AI Kukku Me Docs - Skills Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@1,6..72,500;1,6..72,600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="legacy.css" />
+    <style>
+      .docs-wrap {
+        display: grid;
+        gap: 24px;
+      }
+      .docs-hero {
+        background: rgba(255, 255, 255, 0.88);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        padding: 28px;
+        box-shadow: 0 20px 44px rgba(10, 11, 13, 0.1);
+      }
+      .docs-hero h1 {
+        font-family: "Fraunces", serif;
+        font-size: clamp(1.7rem, 3vw, 2.35rem);
+        line-height: 1.18;
+        margin-bottom: 12px;
+      }
+      .docs-tabs {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 18px;
+      }
+      .docs-product {
+        font-size: 0.84rem;
+        color: rgba(10, 11, 13, 0.62);
+        margin-top: 4px;
+        margin-bottom: 8px;
+      }
+      .docs-tab {
+        text-decoration: none;
+        border: 1px solid var(--line);
+        padding: 8px 14px;
+        border-radius: 999px;
+        color: var(--ink);
+        background: #fff;
+        font-size: 0.9rem;
+      }
+      .docs-tab.active {
+        background: var(--sea);
+        color: #fff;
+        border-color: transparent;
+      }
+      .doc-card {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        padding: 22px;
+        box-shadow: 0 14px 28px rgba(10, 11, 13, 0.08);
+      }
+      .doc-card h2 {
+        font-family: "Fraunces", serif;
+        margin-bottom: 10px;
+      }
+      .doc-card h3 {
+        margin-top: 16px;
+        margin-bottom: 8px;
+        font-size: 1.05rem;
+      }
+      .doc-card p,
+      .doc-card li {
+        line-height: 1.6;
+        color: rgba(10, 11, 13, 0.78);
+      }
+      .doc-card ul,
+      .doc-card ol {
+        padding-left: 18px;
+        display: grid;
+        gap: 6px;
+      }
+      .skill-index {
+        columns: 2;
+        column-gap: 28px;
+      }
+      .skill-index li {
+        break-inside: avoid;
+      }
+      .skill-index a {
+        color: var(--sea-dark);
+        text-decoration: none;
+        border-bottom: 1px dashed rgba(11, 60, 68, 0.35);
+      }
+      .skill-index a:hover {
+        color: var(--sea);
+      }
+      .skill-section {
+        scroll-margin-top: 90px;
+      }
+      .note {
+        border-left: 3px solid var(--sea);
+        padding: 10px 12px;
+        background: rgba(199, 230, 242, 0.3);
+        border-radius: 10px;
+        margin-top: 10px;
+      }
+      @media (max-width: 900px) {
+        .skill-index {
+          columns: 1;
+        }
+      }
+    </style>
+  <!-- SEO:start -->
+  <link rel="canonical" href="https://ibhanai.com/docs-skills.html" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#1f6f78" />
+  <meta name="author" content="IbhanAi Labs" />
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="IbhanAi Labs" />
+  <meta property="og:title" content="Personal AI Kukku Me Docs - Skills Guide" />
+  <meta property="og:description" content="Skills guide for Kukku — native skills such as habit and expense tracking, and how agents use them." />
+  <meta property="og:url" content="https://ibhanai.com/docs-skills.html" />
+  <meta property="og:image" content="https://ibhanai.com/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Personal AI Kukku Me Docs - Skills Guide" />
+  <meta name="twitter:description" content="Skills guide for Kukku — native skills such as habit and expense tracking, and how agents use them." />
+  <meta name="twitter:image" content="https://ibhanai.com/og-image.png" />
+  <!-- Icons -->
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <!-- SEO:end -->
+</head>
+  <body>
+  <div id="progress" aria-hidden="true"></div>
+    <div class="glow" aria-hidden="true"></div>
+
+    <header class="nav">
+      <div class="brand">
+        <a href="index.html" aria-label="Kukku home">
+          <svg class="mark" viewBox="0 0 40 40" fill="none" aria-hidden="true"><ellipse cx="20" cy="20" rx="18" ry="8" stroke="var(--accent)" stroke-width="2.4" transform="rotate(45 20 20)"/><ellipse cx="20" cy="20" rx="18" ry="8" stroke="var(--brass)" stroke-width="2.4" transform="rotate(-45 20 20)"/><circle cx="14.5" cy="20" r="3.4" fill="var(--accent)"/><circle cx="25.5" cy="20" r="3.4" fill="var(--accent)"/><rect x="16" y="18.6" width="8" height="2.8" fill="var(--accent)"/></svg><span class="wm">Ibhan<span class="ai">Ai</span><span class="labs">Labs</span></span>
+        </a>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="index.html">Company</a>
+        <div class="nav-item has-dropdown">
+          <a href="docs-user.html">Docs</a>
+          <div class="nav-dropdown">
+            <span class="nav-subtitle">Personal AI Kukku Me</span>
+            <a href="docs-user.html">User Guide</a>
+            <a href="docs-platform.html">Platform Guide</a>
+            <a href="docs-tools.html">Tools Guide</a>
+            <a href="docs-skills.html">Skills Guide</a>
+            <a href="docs-release.html">Release Roadmap</a>
+          </div>
+        </div>
+        <a href="privacy.html">Privacy</a>
+        <a href="support.html">Support</a>
+      </nav>
+    </header>
+
+    <main class="docs-wrap">
+      <section class="docs-hero">
+        <p class="eyebrow">Documentation</p>
+        <h1>Personal AI Kukku Me Skills Guide</h1>
+        <p class="lede">Skills are modular capabilities that follow the Kukku <code>skills.md</code> standard and give an agent a self-contained ability. Kukku 2.0 ships two native skills — Habit Tracker and Expense Tracker — and you can add more.</p>
+        <p class="docs-product">Personal AI Kukku Me App Docs</p>
+        <div class="docs-tabs">
+          <a class="docs-tab" href="docs-user.html">User Guide</a>
+          <a class="docs-tab" href="docs-platform.html">Platform Guide</a>
+          <a class="docs-tab" href="docs-tools.html">Tools Guide</a>
+          <a class="docs-tab active" href="docs-skills.html">Skills Guide</a>
+          <a class="docs-tab" href="docs-release.html">Release Roadmap</a>
+        </div>
+      </section>
+
+      <section class="doc-card">
+        <h2>What is a Skill?</h2>
+        <p>A skill is a self-contained capability module that follows the Kukku <code>skills.md</code> standard. A skill packages its own behavior and data handling, so an agent that uses it gains that ability directly.</p>
+        <ul>
+          <li>Kukku ships two <strong>native skills</strong>: <strong>Habit Tracker</strong> and <strong>Expense Tracker</strong>.</li>
+          <li>You can add <strong>additional skills</strong> that adhere to the <code>skills.md</code> standard.</li>
+        </ul>
+        <p class="note"><strong>Important:</strong> Skills and tools cannot be assigned to the same agent at the same time. An agent is either skill-based or tool-based. Choose skills for agents built around a defined capability, and tools for agents that chain actions like search, messaging or calendar.</p>
+      </section>
+
+      <section class="doc-card">
+        <h2>Skills vs Tools vs Agents</h2>
+        <ul>
+          <li><strong>Agents</strong> are the assistants you talk to (for example Habits, Expenses, Food &amp; Nutrition, Health &amp; Fitness, Everyday). See the <a href="docs-user.html">User Guide</a>.</li>
+          <li><strong>Tools</strong> perform a single action — send a message, look up weather, read a document. See the <a href="docs-tools.html">Tools Guide</a>.</li>
+          <li><strong>Skills</strong> are capability modules following <code>skills.md</code> that an agent can be built on, instead of tools.</li>
+        </ul>
+        <p class="note"><strong>Journals and analytics are not skills.</strong> Journals (today / weekly / monthly views) are a built-in feature within each relevant agent, and analytics happens internally — neither is assigned like a skill.</p>
+      </section>
+
+      <section class="doc-card">
+        <h2>Native Skills</h2>
+        <h3>Habit Tracker</h3>
+        <p>Kukku native skill for tracking recurring habits with streaks and completion.</p>
+        <ul>
+          <li>Best for: building routines and keeping streaks alive.</li>
+          <li>Captures: habit name, cadence, completion state and streak history.</li>
+          <li>Example prompt: "Mark my morning walk done and show this week's streak."</li>
+        </ul>
+        <h3>Expense Tracker</h3>
+        <p>Kukku native skill for logging spending with categories and running totals.</p>
+        <ul>
+          <li>Best for: everyday expense tracking and budget awareness.</li>
+          <li>Captures: amount, category, merchant and date.</li>
+          <li>Example prompt: "Log $18 lunch under Food."</li>
+        </ul>
+      </section>
+
+      <section class="doc-card">
+        <h2>Adding Skills (skills.md standard)</h2>
+        <ul>
+          <li>Additional skills must adhere to the Kukku <code>skills.md</code> standard so the app can load and run them consistently.</li>
+          <li>Assign a skill to an agent that has no tools attached — remember skills and tools are mutually exclusive per agent.</li>
+          <li>After changing an agent's skills, re-open <strong>Edit Agent</strong> and <strong>Save Agent</strong> so the change takes effect.</li>
+          <li>Skill orchestration runs in Analyzer mode; if a skill does not trigger, check mode, subscription, permissions and agent assignment.</li>
+        </ul>
+        <p class="note"><strong>Premium Subscription:</strong> Analyzer mode and skill/tool orchestration require Premium. Direct mode gives conversational replies only.</p>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2026 Kukku Me.</p>
+    </footer>
+    <script src="site.js"></script>
+</body>
+</html>

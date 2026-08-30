@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="IbhanAi Labs Platform Stack — our family of AI-powered products and platforms: the Kukku AI App, Voice Agent, and AI Unified Messaging Service." />
+  <title>IbhanAi Labs — Platform Stack</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@1,6..72,500;1,6..72,600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="legacy.css" />
+  <style>
+    .sol-shell {
+      display: grid;
+      gap: 30px;
+    }
+
+    /* Hero */
+    .sol-hero {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      padding: 42px 34px;
+      background:
+        #fff;
+      box-shadow: 0 26px 50px rgba(10, 11, 13, 0.1);
+      backdrop-filter: blur(4px);
+    }
+
+    .sol-hero h1 {
+      font-family: "SF Pro Rounded", "SF Pro Display", "Fraunces", serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.06;
+      font-weight: 700;
+      margin: 12px 0 16px;
+      max-width: 380px;
+      min-height: 2.2em;
+    }
+
+    .sol-rot {
+      color: var(--sea-dark);
+      display: inline-block;
+      transition: opacity 220ms ease, transform 220ms ease;
+      background: linear-gradient(100deg, var(--sea), var(--sun) 92%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .sol-rot.is-changing {
+      opacity: 0.15;
+      transform: translateY(0.16em);
+    }
+
+    .sol-hero .lede {
+      max-width: 60ch;
+      margin-bottom: 20px;
+    }
+
+    .sol-hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .sol-hero-tags span {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border-radius: 999px;
+      border: 1px solid rgba(11, 60, 68, 0.2);
+      background: rgba(198, 230, 242, 0.6);
+      color: var(--sea-dark);
+      padding: 8px 13px;
+      font-weight: 600;
+    }
+
+    /* Pillar heading */
+    .sol-pillar-head {
+      max-width: 62ch;
+      margin-bottom: 22px;
+    }
+
+    .sol-pillar-head h2 {
+      font-family: "SF Pro Rounded", "SF Pro Display", "Fraunces", serif;
+      font-size: clamp(1.7rem, 2.8vw, 2.4rem);
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .sol-pillar-head p {
+      line-height: 1.62;
+      color: rgba(10, 11, 13, 0.72);
+    }
+
+    /* Product tiles grid */
+    .svc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px;
+    }
+
+    .svc-tile {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 20px;
+      box-shadow: 0 16px 32px rgba(10, 11, 13, 0.07);
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .svc-tile:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 44px rgba(10, 11, 13, 0.12);
+    }
+
+    a.svc-tile {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .svc-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      font-size: 1.5rem;
+      line-height: 1;
+      border-radius: 14px;
+      background: rgba(15, 82, 87, 0.08);
+    }
+
+    .svc-tile h3 {
+      font-family: "SF Pro Rounded", "SF Pro Display", "Fraunces", serif;
+      font-size: 1.08rem;
+      font-weight: 700;
+    }
+
+    .svc-tile p {
+      line-height: 1.55;
+      color: rgba(10, 11, 13, 0.72);
+      font-size: 0.94rem;
+      flex: 1;
+    }
+
+    .svc-points {
+      list-style: none;
+      display: grid;
+      gap: 7px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .svc-points li {
+      position: relative;
+      padding-left: 18px;
+      line-height: 1.5;
+      font-size: 0.9rem;
+      color: rgba(10, 11, 13, 0.72);
+    }
+
+    .svc-points li::before {
+      content: "";
+      position: absolute;
+      left: 2px;
+      top: 0.52em;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--sea);
+    }
+
+    .status {
+      align-self: flex-start;
+      font-family: "Space Grotesk", system-ui, sans-serif;
+      font-size: 0.66rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      padding: 4px 9px;
+      border-radius: 999px;
+    }
+
+    .status--soon {
+      color: var(--sea-dark);
+      background: rgba(31, 111, 120, 0.12);
+      border: 1px solid rgba(31, 111, 120, 0.22);
+    }
+
+    .status--live {
+      color: #1f6f3f;
+      background: rgba(52, 168, 108, 0.16);
+      border: 1px solid rgba(52, 168, 108, 0.4);
+    }
+
+    /* CTA */
+    .sol-cta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+      background:
+        #fff;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: 0 18px 34px rgba(10, 11, 13, 0.08);
+    }
+
+    .sol-cta h2 {
+      font-family: "SF Pro Rounded", "SF Pro Display", "Fraunces", serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .sol-cta p {
+      color: rgba(10, 11, 13, 0.72);
+      max-width: 52ch;
+      line-height: 1.6;
+    }
+
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(18px) scale(0.99);
+      transition: opacity 620ms ease, transform 620ms ease;
+    }
+
+    [data-reveal].visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    @media (max-width: 720px) {
+      .sol-cta {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      [data-reveal] {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+  <!-- SEO:start -->
+  <link rel="canonical" href="https://ibhanai.com/platform.html" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#1f6f78" />
+  <meta name="author" content="IbhanAi Labs" />
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="IbhanAi Labs" />
+  <meta property="og:title" content="IbhanAi Labs — Platform Stack" />
+  <meta property="og:description" content="IbhanAi Labs Platform Stack — our family of AI-powered products and platforms: the Kukku AI App, Voice Agent, and AI Unified Messaging Service." />
+  <meta property="og:url" content="https://ibhanai.com/platform.html" />
+  <meta property="og:image" content="https://ibhanai.com/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="IbhanAi Labs — Platform Stack" />
+  <meta name="twitter:description" content="IbhanAi Labs Platform Stack — our family of AI-powered products and platforms: the Kukku AI App, Voice Agent, and AI Unified Messaging Service." />
+  <meta name="twitter:image" content="https://ibhanai.com/og-image.png" />
+  <!-- Icons -->
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <!-- SEO:end -->
+</head>
+<body>
+  <div id="progress" aria-hidden="true"></div>
+  <div class="glow" aria-hidden="true"></div>
+
+  <header class="nav">
+    <div class="brand">
+      <a href="index.html" aria-label="Kukku home">
+        <svg class="mark" viewBox="0 0 40 40" fill="none" aria-hidden="true"><ellipse cx="20" cy="20" rx="18" ry="8" stroke="var(--accent)" stroke-width="2.4" transform="rotate(45 20 20)"/><ellipse cx="20" cy="20" rx="18" ry="8" stroke="var(--brass)" stroke-width="2.4" transform="rotate(-45 20 20)"/><circle cx="14.5" cy="20" r="3.4" fill="var(--accent)"/><circle cx="25.5" cy="20" r="3.4" fill="var(--accent)"/><rect x="16" y="18.6" width="8" height="2.8" fill="var(--accent)"/></svg><span class="wm">Ibhan<span class="ai">Ai</span><span class="labs">Labs</span></span>
+      </a>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="engineering.html">Engineering</a>
+      <a href="platform.html" aria-current="page">Products</a>
+      <a href="solutions.html">Solutions</a>
+      <a href="services.html">Services</a>
+      <a href="blog/">Blog</a>
+      <a class="nav-cta" href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main class="sol-shell">
+    <!-- HERO -->
+    <section class="sol-hero" data-reveal>
+      <canvas id="hero-canvas" aria-hidden="true"></canvas>
+            <div class="sol-hero-copy">
+      <p class="eyebrow">IbhanAi Labs · Products</p>
+      <h1><span class="sol-rot" data-words="AI on your device|AI on-premise|AI for your teams">AI on your device</span></h1>
+      <p class="lede">
+        A growing family of AI products — from the on-device <strong>Kukku app</strong> to on-premise
+        <strong>voice</strong> and <strong>messaging</strong> platforms. Deploy AI where your data already lives.
+      </p>
+      <div class="sol-hero-tags">
+        <span>On-device</span>
+        <span>On-premise</span>
+        <span>Private by design</span>
+      </div>
+      </div>
+      <div class="hero-atom" aria-hidden="true"><div class="atom"><div class="orbit o1"><div class="spin"><i class="e e1"></i></div></div><div class="orbit o2"><div class="spin"><i class="e e2"></i></div></div><div class="orbit o3"><div class="spin"><i class="e e3"></i></div></div><div class="core"></div></div></div>
+    </section>
+
+    <!-- PLATFORM STACK -->
+    <section id="products" class="section" data-reveal data-delay="60">
+      <div class="sol-pillar-head">
+        <p class="eyebrow">Platform Stack</p>
+        <h2>AI products &amp; platforms</h2>
+        <p>Each product runs inside your environment — on your device, in your own cloud, or on-premise — and can stand alone or
+          work together as one AI layer across your organization.</p>
+      </div>
+      <div class="svc-grid">
+        <a class="svc-tile" href="intro.html">
+          <span class="svc-icon" aria-hidden="true">🪄</span>
+          <h3>Kukku AI App</h3>
+          <p>On-device personal AI for iOS — one of our AI-powered products.</p>
+          <ul class="svc-points">
+            <li>Ready-made agents for everyday life</li>
+            <li>Runs a local model, private by design</li>
+            <li>Optional remote models with your key</li>
+          </ul>
+          <span class="status status--live">Available on iOS →</span>
+        </a>
+        <a class="svc-tile" href="voice.html">
+          <span class="svc-icon" aria-hidden="true">🎧</span>
+          <h3>Voice Agent — Inbound &amp; Outbound</h3>
+          <p>Private, real-time, multilingual voice agents, running in your own environment.</p>
+          <ul class="svc-points">
+            <li>Visual builder for no-code call flows</li>
+            <li>Outbound campaigns, web &amp; telephony</li>
+            <li>Private by design — 30+ languages, self-hostable</li>
+          </ul>
+          <span class="status status--live">Explore Voice Agent →</span>
+        </a>
+        <a class="svc-tile" href="messaging.html">
+          <span class="svc-icon" aria-hidden="true">💬</span>
+          <h3>AI Unified Messaging Service</h3>
+          <p>A private messaging platform, chatbot and AI voice agent that follows your organisation's rules.</p>
+          <ul class="svc-points">
+            <li>Private chatbot on your own infrastructure</li>
+            <li>Policy-safe SMS, email, EMR &amp; voice</li>
+            <li>Reads only your approved knowledge</li>
+          </ul>
+          <span class="status status--live">Explore Unified Messaging →</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- CONTACT CTA -->
+    <section id="contact" class="sol-cta" data-reveal data-delay="60">
+      <div>
+        <p class="eyebrow">Work with us</p>
+        <h2>Want a closer look at the stack?</h2>
+        <p>Tell us which product fits your need — the Kukku app, on-premise voice, or unified messaging — and we'll walk
+          you through a focused pilot.</p>
+      </div>
+      <a class="button" href="mailto:support@ibhanai.com?subject=IbhanAi%20Labs%20—%20Platform%20Stack%20enquiry">Talk to IbhanAi Labs</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 IbhanAi Labs. · <a href="index.html">Back to Home</a> · <a href="solutions.html">Solutions</a> · <a href="blog/">Blog</a> · <a href="https://www.linkedin.com/company/kukku-ai-solutions" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+  </footer>
+
+  <script>
+    const revealEls = document.querySelectorAll("[data-reveal]");
+    const rotatingWord = document.querySelector(".sol-rot[data-words]");
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const setVisible = (el) => {
+      const delay = Number(el.dataset.delay || "0");
+      if (delay) el.style.transitionDelay = `${delay}ms`;
+      el.classList.add("visible");
+    };
+
+    if (!reduceMotion && "IntersectionObserver" in window) {
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisible(entry.target);
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.14, rootMargin: "0px 0px -8% 0px" });
+      revealEls.forEach((el) => obs.observe(el));
+    } else {
+      revealEls.forEach((el) => setVisible(el));
+    }
+
+    if (rotatingWord && !reduceMotion) {
+      const words = (rotatingWord.dataset.words || "").split("|").map((w) => w.trim()).filter(Boolean);
+      let i = 0;
+      if (words.length > 1) {
+        setInterval(() => {
+          rotatingWord.classList.add("is-changing");
+          setTimeout(() => {
+            i = (i + 1) % words.length;
+            rotatingWord.textContent = words[i];
+            rotatingWord.classList.remove("is-changing");
+          }, 220);
+        }, 2400);
+      }
+    }
+  </script>
+  <script src="site.js"></script>
+</body>
+</html>

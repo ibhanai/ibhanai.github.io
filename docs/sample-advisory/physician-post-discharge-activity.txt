@@ -1,0 +1,35 @@
+IBHANAI SAMPLE ADVISORY — PHYSICIAN POST-DISCHARGE ACTIVITY NOTE
+==============================================================
+Purpose: Upload this file to a IbhanAi agent's knowledge base (for example a
+Health & Fitness agent) so activity suggestions respect post-discharge limits.
+Sample content — edit or replace with your own physician's written note.
+
+PATIENT CONTEXT
+- Situation: recovering at home after a minor procedure. Cleared for light
+  activity only, with a graded return over two weeks.
+- Limits provided by the physician (the agent must respect these):
+  * Weeks 1-2: short, gentle walks only. No lifting over 5 kg.
+  * No high-intensity exercise, running, or core strain until reviewed.
+  * Stop and rest on any pain, dizziness, or shortness of breath.
+
+PHYSICIAN'S GUIDANCE (the agent should follow this)
+1. Keep all activity suggestions within the limits above. When unsure, suggest
+   the more conservative option.
+2. Encourage gradual, gentle progression (e.g. add 2-3 minutes of walking every
+   few days if comfortable).
+3. Emphasise rest, hydration, and sleep as part of recovery.
+4. For anything outside gentle activity, advise the user to confirm with their
+   physician before proceeding.
+
+SAFETY ESCALATION (important)
+If the user reports warning signs — chest pain, severe or worsening pain,
+fever, breathlessness, fainting — the agent must NOT give exercise advice and
+should tell the user to contact their doctor or emergency services.
+
+TONE
+Calm, cautious, reassuring. Prioritise safety over progress.
+
+DISCLAIMER
+Sample content for demonstrating knowledge-base grounding in IbhanAi. This is
+NOT medical advice and is not a real physician's instruction. Always follow the
+written discharge instructions from your own treating clinician.

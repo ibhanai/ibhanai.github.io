@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="A practical pattern library for building private AI agents with clear boundaries and reliable behavior." />
+  <title>Private Agent Patterns: Building Useful AI Without Leaking Context | IbhanAi Labs Blog</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@1,6..72,500;1,6..72,600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="../legacy.css" />
+  <style>
+    .post-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: clamp(20px, 3.5vw, 36px);
+      box-shadow: 0 24px 46px rgba(10, 11, 13, 0.09);
+    }
+
+    .post-wrap h1 {
+      font-family: "Fraunces", serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+
+    .post-meta {
+      color: rgba(10, 11, 13, 0.62);
+      margin-bottom: 20px;
+      font-size: 0.95rem;
+    }
+
+    .post-wrap h2 {
+      font-family: "Fraunces", serif;
+      margin-top: 24px;
+      margin-bottom: 10px;
+      font-size: 1.45rem;
+    }
+
+    .post-wrap p,
+    .post-wrap li {
+      line-height: 1.72;
+      color: rgba(10, 11, 13, 0.82);
+      font-size: 1.03rem;
+    }
+
+    .post-wrap ul {
+      padding-left: 22px;
+      display: grid;
+      gap: 8px;
+      margin: 8px 0;
+    }
+
+    .pattern {
+      margin-top: 14px;
+      border: 1px solid rgba(11, 60, 68, 0.18);
+      border-radius: 14px;
+      padding: 12px 14px;
+      background: rgba(240, 218, 193, 0.26);
+    }
+
+    .pattern h3 {
+      font-family: "Fraunces", serif;
+      font-size: 1.12rem;
+      margin-bottom: 6px;
+    }
+
+    .practice-note {
+      margin-top: 14px;
+      border: 1px solid rgba(11, 60, 68, 0.2);
+      border-radius: 14px;
+      padding: 14px 16px;
+      background: rgba(199, 230, 242, 0.34);
+    }
+
+    .practice-note p {
+      margin: 0;
+    }
+
+    .diagram {
+      margin-top: 12px;
+      border: 1px dashed rgba(11, 60, 68, 0.28);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.86);
+      padding: 12px;
+    }
+
+    .diagram-row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .node {
+      border: 1px solid rgba(11, 60, 68, 0.22);
+      border-radius: 10px;
+      background: #f7fafb;
+      color: rgba(10, 11, 13, 0.86);
+      padding: 8px 10px;
+      font-size: 0.88rem;
+      line-height: 1.35;
+    }
+
+    .arrow {
+      font-size: 0.9rem;
+      color: rgba(11, 60, 68, 0.9);
+      letter-spacing: 0.03em;
+    }
+
+    .diagram-caption {
+      margin-top: 8px;
+      font-size: 0.88rem;
+      color: rgba(10, 11, 13, 0.66);
+    }
+  </style>
+</head>
+<body>
+  <div id="progress" aria-hidden="true"></div>
+  <div class="glow" aria-hidden="true"></div>
+
+  <header class="nav">
+    <div class="brand">
+      <a href="../index.html" aria-label="Kukku home">
+        <svg class="mark" viewBox="0 0 40 40" fill="none" aria-hidden="true"><ellipse cx="20" cy="20" rx="18" ry="8" stroke="var(--accent)" stroke-width="2.4" transform="rotate(45 20 20)"/><ellipse cx="20" cy="20" rx="18" ry="8" stroke="var(--brass)" stroke-width="2.4" transform="rotate(-45 20 20)"/><circle cx="14.5" cy="20" r="3.4" fill="var(--accent)"/><circle cx="25.5" cy="20" r="3.4" fill="var(--accent)"/><rect x="16" y="18.6" width="8" height="2.8" fill="var(--accent)"/></svg><span class="wm">Ibhan<span class="ai">Ai</span><span class="labs">Labs</span></span>
+      </a>
+    </div>
+    <nav class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="../index.html">Company</a>
+      <a href="./index.html">Blog</a>
+      <a href="../privacy.html">Privacy</a>
+      <a href="../support.html">Support</a>
+    </nav>
+  </header>
+
+  <main>
+    <article class="post-wrap">
+      <p class="eyebrow">Agent Architecture</p>
+      <h1>Private Agent Patterns: Building Useful AI Without Leaking Context</h1>
+      <p class="post-meta">Published on March 14, 2026 · by IbhanAi Labs</p>
+
+      <p>
+        Many teams now want agentic behavior, but they do not want uncontrolled data flow. Private agents need clear
+        boundaries: what they can access, where memory is stored, and when external calls are allowed.
+      </p>
+
+      <h2>What Makes an Agent "Private"</h2>
+      <p>
+        A private agent is not just an LLM running locally. It is an execution system with policy constraints and
+        transparent routing. Privacy must be enforced by architecture, not just terms of service.
+      </p>
+      <ul>
+        <li>Local memory for user context and history.</li>
+        <li>Permission-gated tool access for files, contacts, and system integrations.</li>
+        <li>Explicit outbound policy checks before network requests.</li>
+      </ul>
+      <div class="practice-note">
+        <p>
+          <strong>Validation note:</strong> The pattern names in this article are Kukku working labels, not formal standards.
+          The underlying methods are established best practices: least-privilege access control, policy enforcement points,
+          hybrid model routing, and auditable action logging.
+        </p>
+      </div>
+
+      <h2>Pattern 1: Scoped Memory Zones</h2>
+      <div class="pattern">
+        <h3>Use case</h3>
+        <p>Keep sensitive context isolated by role or workflow.</p>
+      </div>
+      <p>
+        Segment memory into zones such as personal, project, and public reference. The agent can reason across zones
+        only when policy allows it. This limits accidental context bleed and simplifies auditing.
+      </p>
+      <div class="diagram" aria-label="Scoped Memory Zones diagram">
+        <div class="diagram-row">
+          <div class="node">Agent Runtime</div>
+          <div class="arrow">routes to</div>
+          <div class="node">Personal Memory</div>
+          <div class="node">Project Memory</div>
+          <div class="node">Public Reference</div>
+        </div>
+        <p class="diagram-caption">Cross-zone reads/writes require policy approval.</p>
+      </div>
+
+      <h2>Pattern 2: Tool Firewall</h2>
+      <div class="pattern">
+        <h3>Use case</h3>
+        <p>Control external actions like sending messages, making API calls, or creating records.</p>
+      </div>
+      <p>
+        Route all tool actions through a policy layer that checks identity, intent class, and data sensitivity before
+        execution. This avoids hidden side effects and keeps actions explainable.
+      </p>
+      <div class="diagram" aria-label="Tool Firewall diagram">
+        <div class="diagram-row">
+          <div class="node">User Intent</div>
+          <div class="arrow">to</div>
+          <div class="node">Agent Planner</div>
+          <div class="arrow">through</div>
+          <div class="node">Policy Gateway</div>
+          <div class="arrow">to</div>
+          <div class="node">Tools/API Actions</div>
+        </div>
+        <p class="diagram-caption">No external action executes without policy gateway checks.</p>
+      </div>
+
+      <h2>Pattern 3: Local-First with Selective Escalation</h2>
+      <div class="pattern">
+        <h3>Use case</h3>
+        <p>Balance privacy, quality, and model capability.</p>
+      </div>
+      <p>
+        Run lightweight local reasoning first, then escalate to a remote provider only when needed. Include redaction
+        and minimization before escalation to preserve privacy.
+      </p>
+      <div class="diagram" aria-label="Selective Escalation diagram">
+        <div class="diagram-row">
+          <div class="node">Request</div>
+          <div class="arrow">to</div>
+          <div class="node">Local Model</div>
+          <div class="arrow">if insufficient</div>
+          <div class="node">Redaction + Minimize</div>
+          <div class="arrow">to</div>
+          <div class="node">Remote Model</div>
+        </div>
+        <p class="diagram-caption">Escalate only when local capability is insufficient for task quality.</p>
+      </div>
+
+      <h2>Pattern 4: Action Trace and Review</h2>
+      <p>
+        Agent systems should maintain a user-visible trace: which tools were called, why, and what data was used.
+        Teams can then debug behavior, satisfy governance requirements, and improve trust.
+      </p>
+      <div class="pattern">
+        <h3>Use case</h3>
+        <p>Enable debugging, compliance review, and user trust with transparent execution logs.</p>
+      </div>
+      <div class="diagram" aria-label="Action Trace and Review diagram">
+        <div class="diagram-row">
+          <div class="node">User Request</div>
+          <div class="arrow">produces</div>
+          <div class="node">Decision Trace</div>
+          <div class="arrow">feeds</div>
+          <div class="node">Audit Log</div>
+          <div class="arrow">shown in</div>
+          <div class="node">Review UI</div>
+        </div>
+        <p class="diagram-caption">Every key decision and tool call is traceable and reviewable.</p>
+      </div>
+
+      <h2>Implementation Checklist</h2>
+      <ul>
+        <li>Define capability boundaries per agent role.</li>
+        <li>Separate memory storage by sensitivity level.</li>
+        <li>Introduce a policy gateway for all external interactions.</li>
+        <li>Log and expose decision traces for review.</li>
+        <li>Continuously test edge cases where context leakage can occur.</li>
+      </ul>
+
+      <p>
+        Products like Kukku Me can deliver useful agentic workflows without giving up user trust when these patterns
+        are built into the system from the beginning.
+      </p>
+    </article>
+  </main>
+
+  <footer>
+    <p>© 2026 Kukku Me. · <a href="index.html">Back to Blog</a></p>
+  </footer>
+  <script src="../site.js"></script>
+</body>
+</html>
