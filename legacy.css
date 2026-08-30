@@ -1148,3 +1148,92 @@ h3, h4, h5, h6 {
   .sol-hero { grid-template-columns: 1fr !important; }
   .sol-hero .hero-atom { order: 1; min-height: 220px; }
 }
+
+/* ============================================================
+   Mobile hamburger nav — collapses the 7 links behind a button.
+   Desktop (>720px) keeps the floating pill row untouched:
+   .nav-toggle is display:none there.
+   ============================================================ */
+.nav-toggle { display: none; }
+
+@media (max-width: 720px) {
+  /* keep the bar a single row (override the old column/wrap rules above) */
+  .nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    top: 12px;
+    padding: 10px 12px;
+  }
+  .nav.open { border-radius: 22px; }
+
+  .brand {
+    width: auto;
+    flex: 1 1 auto;
+    justify-content: flex-start;
+  }
+
+  /* hamburger button */
+  .nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    order: 2;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.6);
+    color: var(--ink);
+    cursor: pointer;
+  }
+  .nav-toggle .bars,
+  .nav-toggle .bars::before,
+  .nav-toggle .bars::after {
+    content: "";
+    display: block;
+    width: 18px;
+    height: 2px;
+    border-radius: 2px;
+    background: currentColor;
+    transition: transform 180ms ease, top 180ms ease, background 180ms ease;
+  }
+  .nav-toggle .bars { position: relative; }
+  .nav-toggle .bars::before { position: absolute; left: 0; top: -6px; }
+  .nav-toggle .bars::after  { position: absolute; left: 0; top: 6px; }
+  /* animate bars into an X when open */
+  .nav.open .nav-toggle .bars { background: transparent; }
+  .nav.open .nav-toggle .bars::before { top: 0; transform: rotate(45deg); }
+  .nav.open .nav-toggle .bars::after  { top: 0; transform: rotate(-45deg); }
+
+  /* the links become a dropdown panel below the bar, shown only when open */
+  .nav-links {
+    display: none;
+    order: 3;
+    flex-basis: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+    margin-top: 6px;
+    padding-top: 8px;
+    border-top: 1px solid var(--line);
+  }
+  .nav.open .nav-links { display: flex; }
+  .nav-links a {
+    padding: 11px 10px;
+    border-radius: 10px;
+    font-size: 1rem;
+  }
+  .nav-links a:hover,
+  .nav-links a[aria-current="page"]:not(.nav-cta) {
+    background: rgba(15, 82, 87, 0.06);
+  }
+  .nav-links a.nav-cta {
+    text-align: center;
+    margin-top: 6px;
+  }
+}

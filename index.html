@@ -10,7 +10,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@1,6..72,500;1,6..72,600&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="legacy.css" />
+  <link rel="stylesheet" href="legacy.css?v=2" />
   <style>
     .profile-shell {
       display: grid;
@@ -171,29 +171,33 @@
       padding: 7px 13px;
     }
 
-    .nav {
-      gap: 16px;
-      justify-content: space-between;
-      flex-wrap: nowrap;
-      align-items: center;
-    }
+    /* desktop-only nav refinements — below 721px the shared hamburger nav
+       (legacy.css) takes over, so these must not force the links visible */
+    @media (min-width: 721px) {
+      .nav {
+        gap: 16px;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+        align-items: center;
+      }
 
-    .nav .brand {
-      flex: 1 1 auto;
-    }
+      .nav .brand {
+        flex: 1 1 auto;
+      }
 
-    .nav-links {
-      flex: 0 0 auto;
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      white-space: nowrap;
-    }
+      .nav-links {
+        flex: 0 0 auto;
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        white-space: nowrap;
+      }
 
-    .nav-links a {
-      display: inline-flex;
-      align-items: center;
-      min-height: 44px;
+      .nav-links a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+      }
     }
 
     @keyframes cp-marquee {
@@ -852,6 +856,6 @@
       });
     }
   </script>
-  <script src="site.js"></script>
+  <script src="site.js?v=2"></script>
 </body>
 </html>

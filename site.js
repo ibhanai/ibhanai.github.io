@@ -148,3 +148,30 @@
     addEventListener("resize", size); size(); tick();
   })();
 })();
+
+/* ---- mobile hamburger nav (injected on every page; desktop pill unchanged) ---- */
+(function () {
+  "use strict";
+  var nav = document.querySelector("header.nav");
+  if (!nav) return;
+  var links = nav.querySelector(".nav-links");
+  if (!links) return;
+
+  var btn = document.createElement("button");
+  btn.className = "nav-toggle";
+  btn.type = "button";
+  btn.setAttribute("aria-label", "Toggle menu");
+  btn.setAttribute("aria-expanded", "false");
+  btn.innerHTML = '<span class="bars" aria-hidden="true"></span>';
+  nav.appendChild(btn);
+
+  function close() { nav.classList.remove("open"); btn.setAttribute("aria-expanded", "false"); }
+
+  btn.addEventListener("click", function () {
+    var open = nav.classList.toggle("open");
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+  links.addEventListener("click", function (e) { if (e.target.closest("a")) close(); });
+  addEventListener("resize", function () { if (innerWidth > 720) close(); });
+  addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+})();
