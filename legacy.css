@@ -1139,11 +1139,29 @@ h3, h4, h5, h6 {
 /* Home hero-card layout on sol-hero pages: 2 balanced columns (copy | atom).
    Both columns vertically centered; the atom sets a modest floor height so the
    card hugs its content — no forced 420px min-height leaving whitespace below. */
-.sol-hero { display: grid !important; grid-template-columns: minmax(0, 1fr) 300px; gap: 34px; align-items: center; max-width: 900px; margin-inline: auto; min-height: 0 !important; }
-.sol-hero-copy { position: relative; z-index: 1; min-width: 0; align-self: center; max-width: 100% !important; }
+.sol-hero { display: grid !important; grid-template-columns: minmax(0, 1fr) 300px; gap: 34px; align-items: start; max-width: 900px; margin-inline: auto; min-height: 0 !important; }
+.sol-hero-copy { position: relative; z-index: 1; min-width: 0; align-self: start; max-width: 100% !important; }
 .sol-hero-copy .lede { max-width: 100% !important; }
-/* fixed-width atom track so the wide orbital rings can't steal space from the copy */
-.sol-hero .hero-atom { position: relative !important; right: auto !important; top: auto !important; left: auto !important; transform: none !important; display: flex !important; align-items: center; justify-content: center; z-index: 1; margin: 0; align-self: center; width: 300px; min-height: 300px; }
+/* fixed-width atom track so the wide orbital rings can't steal space from the copy;
+   top-aligned + fixed size so the atom sits identically on every hero (see shared
+   .hero-atom / .cp-hero-atom geometry below) */
+.sol-hero .hero-atom { position: relative !important; right: auto !important; top: auto !important; left: auto !important; transform: none !important; display: flex !important; align-items: center; justify-content: center; z-index: 1; margin: 0; align-self: start; width: 300px; min-height: 300px; perspective: 900px; }
+/* soft radial glow behind the atom — shared by every hero so they look identical */
+.sol-hero .hero-atom::before,
+.cp-hero-atom::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 62%;
+  height: 62%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(15, 82, 87, 0.14), transparent 70%);
+  filter: blur(24px);
+  z-index: 0;
+  pointer-events: none;
+}
 @media (max-width: 820px) {
   .sol-hero { grid-template-columns: 1fr !important; }
   .sol-hero .hero-atom { order: 1; min-height: 220px; }
