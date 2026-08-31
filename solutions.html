@@ -32,12 +32,17 @@
 
     .sol-hero h1 {
       font-family: "SF Pro Rounded", "SF Pro Display", "Fraunces", serif;
-      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-size: clamp(1.75rem, 3.4vw, 3.15rem);
       line-height: 1.06;
       font-weight: 700;
       margin: 12px 0 16px;
-      max-width: 380px;
-      min-height: 2.2em;
+      max-width: none;
+      min-height: 1.2em;
+    }
+
+    /* fixed ink anchor — stays put while only the tail rolls */
+    .sol-prefix {
+      color: var(--ink);
     }
 
     .sol-rot {
@@ -369,7 +374,7 @@
       <canvas id="hero-canvas" aria-hidden="true"></canvas>
             <div class="sol-hero-copy">
       <p class="eyebrow">IbhanAi Labs · Solutions</p>
-      <h1><span class="sol-rot" data-words="AI solutions|For your industry|Vision &amp; language|On your ground">AI solutions</span></h1>
+      <h1><span class="sol-prefix">AI</span> <span class="sol-rot" data-words="solutions|for your industry|you can trust|on your ground">solutions</span></h1>
       <p class="lede">
         Vertical AI shaped around your industry's workflows and compliance needs — deployed on your devices, in your
         own cloud, or on-premise. Need us to build or run it? See <a href="services.html">Services</a>.

@@ -32,12 +32,17 @@
 
     .sol-hero h1 {
       font-family: "SF Pro Rounded", "SF Pro Display", "Fraunces", serif;
-      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-size: clamp(1.75rem, 3.4vw, 3.15rem);
       line-height: 1.06;
       font-weight: 700;
       margin: 12px 0 16px;
-      max-width: 380px;
-      min-height: 2.2em;
+      max-width: none;
+      min-height: 1.2em;
+    }
+
+    /* fixed ink anchor — stays put while only the tail (.sol-rot) rolls */
+    .sol-prefix {
+      color: var(--ink);
     }
 
     .sol-rot {
@@ -309,18 +314,18 @@
       <canvas id="hero-canvas" aria-hidden="true"></canvas>
             <div class="sol-hero-copy">
       <p class="eyebrow">IbhanAi Labs · Engineering</p>
-      <h1><span class="sol-rot" data-words="AI, engineered|Prototype to production|Built for your ground">AI, engineered end to end</span></h1>
+      <h1><span class="sol-prefix">AI</span> <span class="sol-rot" data-words="engineered|at scale|in production|on your ground">engineered</span></h1>
       <p class="lede">
-        The research and engineering behind every product we ship. We <strong>evaluate</strong>, <strong>train</strong>,
-        <strong>optimize</strong> and <strong>harden</strong> models — then serve them on-device, in your own cloud, or
-        on-premise.
+        The engineering behind every AI we ship — from <strong>training</strong> and hardening models, to
+        <strong>architecting the infrastructure</strong> that serves them at scale, to deploying the
+        <strong>inference and agentic systems</strong> that put AI to work in your business.
       </p>
       <div class="sol-hero-tags">
-        <span>Evaluate</span>
-        <span>Train</span>
-        <span>Optimize</span>
-        <span>Deploy</span>
-        <span>Observe</span>
+        <span>Model training</span>
+        <span>Optimization</span>
+        <span>AI infrastructure</span>
+        <span>Inference at scale</span>
+        <span>Agentic systems</span>
       </div>
       </div>
       <div class="hero-atom" aria-hidden="true"><div class="atom"><div class="orbit o1"><div class="spin"><i class="e e1"></i></div></div><div class="orbit o2"><div class="spin"><i class="e e2"></i></div></div><div class="orbit o3"><div class="spin"><i class="e e3"></i></div></div><div class="core"></div></div></div>
@@ -331,8 +336,9 @@
       <div class="sol-pillar-head">
         <p class="eyebrow">Capabilities</p>
         <h2>What we engineer</h2>
-        <p>Nine areas of AI engineering work, applied end-to-end — from measuring model quality to serving hardened models in
-          your environment.</p>
+        <p>Ten areas of AI engineering, applied end-to-end — from measuring model quality to architecting the
+          infrastructure that serves models at scale, then deploying inference and agentic systems into your
+          environment.</p>
       </div>
       <div class="svc-grid">
         <div class="svc-tile">
@@ -363,6 +369,17 @@
             <li>Quantization &amp; pruning</li>
             <li>On-device and edge optimization</li>
             <li>Latency and memory profiling</li>
+          </ul>
+        </div>
+        <div class="svc-tile">
+          <span class="svc-icon" aria-hidden="true">🏗️</span>
+          <h3>AI Infrastructure at Scale</h3>
+          <p>Architect the systems that actually run AI in production.</p>
+          <ul class="svc-points">
+            <li>GPU / accelerator clusters &amp; scheduling</li>
+            <li>Distributed training &amp; high-throughput inference</li>
+            <li>Serving stacks — vLLM, Triton, Kubernetes</li>
+            <li>AWS &amp; GCP cloud, or your own data center</li>
           </ul>
         </div>
         <div class="svc-tile">
@@ -431,32 +448,32 @@
     <!-- FULL CYCLE -->
     <section id="cycle" class="section" data-reveal data-delay="60">
       <div class="sol-pillar-head">
-        <p class="eyebrow">The full cycle</p>
-        <h2>How the lab feeds the platform</h2>
-        <p>These capabilities aren't standalone services — they run end-to-end so research turns into products and
-          industry solutions you can actually deploy.</p>
+        <p class="eyebrow">The full arc</p>
+        <h2>From model to business impact</h2>
+        <p>Four stages, run end-to-end — the piece in the middle, infrastructure at scale, is what turns a working
+          model into a system your business can actually rely on.</p>
       </div>
       <div class="svc-grid">
         <div class="svc-tile">
           <span class="svc-icon" aria-hidden="true">1</span>
-          <h3>Research &amp; Evaluate</h3>
-          <p>Select, benchmark and evaluate candidate models against your task, quality and safety bar.</p>
+          <h3>Train &amp; Optimize</h3>
+          <p>Evaluate, fine-tune, distill and compress models to fit your task, your data and your hardware.</p>
         </div>
         <div class="svc-tile">
           <span class="svc-icon" aria-hidden="true">2</span>
-          <h3>Train &amp; Optimize</h3>
-          <p>Fine-tune, distill and compress until the model fits the device and the data it has to run on.</p>
+          <h3>Architect Infrastructure</h3>
+          <p>Design the clusters, serving stack and pipelines that run models reliably and cost-effectively at scale.</p>
         </div>
         <div class="svc-tile">
           <span class="svc-icon" aria-hidden="true">3</span>
-          <h3>Deploy &amp; Observe</h3>
-          <p>Serve it in your own environment, add guardrails, and monitor quality and drift once it's live.</p>
+          <h3>Deploy Inference &amp; Agents</h3>
+          <p>Ship inference and tool-using agentic systems into your own environment, with guardrails and observability.</p>
         </div>
         <div class="svc-tile">
           <span class="svc-icon" aria-hidden="true">4</span>
-          <h3>Productize &amp; Apply</h3>
-          <p>Ship it as part of the <a href="platform.html">platform stack</a> and into
-            <a href="solutions.html">industry solutions</a>.</p>
+          <h3>Deliver AI for Business</h3>
+          <p>Turn it into <a href="platform.html">products</a> and
+            <a href="solutions.html">industry solutions</a> that move real business metrics.</p>
         </div>
       </div>
     </section>
