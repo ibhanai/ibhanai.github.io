@@ -319,6 +319,104 @@
     .svc-points li { position: relative; padding-left: 16px; font-size: 0.92rem; color: rgba(10,11,13,0.72); line-height: 1.5; }
     .svc-points li::before { content: ""; position: absolute; left: 2px; top: 0.6em; width: 6px; height: 6px; border-radius: 50%; background: var(--sea); }
     .step-badge { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 12px; background: var(--sea); color: #fff; font-weight: 700; font-family: "Space Grotesk", sans-serif; margin-bottom: 6px; }
+
+    /* ---- Manufacturing capability showcase (uniform gallery) ---- */
+    .mfg-cap { margin-top: 26px; }
+    .mfg-cap + .mfg-cap { margin-top: 26px; padding-top: 26px; border-top: 1px solid var(--line); }
+
+    .mfg-cap-head { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 8px; }
+    .mfg-cap-head h4 {
+      font-family: "SF Pro Rounded", "SF Pro Display", "Fraunces", serif;
+      font-size: clamp(1.14rem, 1.9vw, 1.4rem); font-weight: 700; line-height: 1.1;
+    }
+    .mfg-cap-head .tag {
+      font-family: "Space Grotesk", system-ui, sans-serif;
+      font-size: 0.66rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.09em;
+      color: var(--sea-dark); background: rgba(15, 82, 87, 0.09);
+      border: 1px solid rgba(15, 82, 87, 0.18); border-radius: 999px; padding: 4px 11px;
+    }
+    .mfg-cap-desc { line-height: 1.6; color: rgba(10, 11, 13, 0.72); font-size: 0.95rem; max-width: 74ch; margin-bottom: 16px; }
+
+    /* One uniform tile used for every image across the whole section */
+    .shot-grid { display: grid; gap: 16px; grid-template-columns: repeat(2, 1fr); }
+    .shot-grid.four { grid-template-columns: repeat(4, 1fr); }
+
+    .shot {
+      margin: 0; height: 100%; display: flex; flex-direction: column;
+      background: #fff; border: 1px solid var(--line); border-radius: 16px;
+      overflow: hidden; box-shadow: 0 10px 26px rgba(10, 11, 13, 0.08);
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+    .shot:hover { transform: translateY(-5px); box-shadow: 0 22px 42px rgba(10, 11, 13, 0.14); }
+
+    .shot .frame {
+      position: relative; flex: 0 0 auto; min-height: 0;   /* respect aspect-ratio; don't grow to image height */
+      aspect-ratio: 16 / 10;                       /* every image framed identically */
+      background: linear-gradient(158deg, #fbfbf8 0%, #eaf2f1 100%);
+      display: flex; align-items: center; justify-content: center; padding: 12px;
+      overflow: hidden;
+    }
+    .shot .frame img {
+      max-width: 100%; max-height: 100%; width: auto; height: auto;
+      object-fit: contain; border-radius: 7px; display: block;
+      box-shadow: 0 4px 14px rgba(10, 11, 13, 0.12);
+    }
+    /* little step number chip for the flow shots */
+    .shot .step {
+      position: absolute; top: 10px; left: 10px; z-index: 2;
+      font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 0.72rem;
+      color: #fff; background: var(--sea); border-radius: 8px; padding: 3px 9px;
+      box-shadow: 0 3px 10px rgba(10, 11, 13, 0.2);
+    }
+    .shot figcaption {
+      flex: 0 0 auto; box-sizing: border-box; min-height: 60px;  /* fixed band → identical split on every card */
+      display: flex; align-items: center; gap: 8px;
+      font-family: "Space Grotesk", system-ui, sans-serif;
+      font-size: 0.78rem; line-height: 1.4; color: rgba(10, 11, 13, 0.64);
+      padding: 11px 14px; border-top: 1px solid var(--line); background: rgba(250, 249, 245, 0.6);
+    }
+    /* clamp caption text to two lines so the band height never varies */
+    .shot figcaption > span:last-child {
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .shot figcaption b { color: var(--ink); font-weight: 600; }
+    .shot figcaption .dot { flex: 0 0 auto; width: 7px; height: 7px; border-radius: 50%; background: var(--sun); }
+
+    .mfg-chips { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 15px; align-items: center; }
+    .mfg-chips span {
+      font-family: "Space Grotesk", system-ui, sans-serif;
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.03em;
+      color: var(--sea-dark); background: rgba(15, 82, 87, 0.07);
+      border: 1px solid rgba(15, 82, 87, 0.15); border-radius: 999px; padding: 4px 10px;
+    }
+
+    .cap-roadmap-head {
+      font-family: "Space Grotesk", sans-serif; font-size: 0.74rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.1em; color: rgba(10, 11, 13, 0.5);
+      margin: 30px 0 12px; padding-top: 26px; border-top: 1px solid var(--line);
+    }
+
+    /* ---- Shop-floor: commentary left + auto-flipping screenshot right ---- */
+    .sf-cap { display: grid; grid-template-columns: 0.82fr 1.18fr; gap: 30px; align-items: center; }
+    .sf-cap .mfg-cap-desc { margin-bottom: 14px; }
+    .sf-carousel { max-width: 100%; }
+    .shot .frame img.sf-slide {
+      position: absolute; inset: 0; width: 100%; height: 100%; box-sizing: border-box;
+      padding: 12px; object-fit: contain; opacity: 0; transition: opacity 0.5s ease; pointer-events: none;
+    }
+    .shot .frame img.sf-slide.is-active { opacity: 1; }
+    .sf-dots {
+      position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);
+      display: flex; gap: 6px; z-index: 2;
+    }
+    .sf-dots i { width: 7px; height: 7px; border-radius: 50%; background: rgba(10, 11, 13, 0.22); transition: background 0.3s ease, transform 0.3s ease; }
+    .sf-dots i.is-active { background: var(--sea); transform: scale(1.25); }
+
+    @media (max-width: 900px) { .shot-grid.four { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 760px) { .sf-cap { grid-template-columns: 1fr; gap: 16px; } }
+    @media (max-width: 520px) {
+      .shot-grid, .shot-grid.four { grid-template-columns: 1fr; }
+    }
   </style>
   <!-- SEO:start -->
   <link rel="canonical" href="https://ibhanai.com/solutions.html" />
@@ -404,35 +502,138 @@
           <span class="industry-badge" aria-hidden="true">🏭</span>
           <div class="industry-head-copy">
             <h3>Manufacturing</h3>
-            <p>Quality inspection and process intelligence across the assembly line.</p>
+            <p>Computer-vision quality inspection and an on-device shop-floor assistant — running at the edge, on your plant network.</p>
           </div>
-          <span class="industry-tag">Quality Inspection</span>
+          <span class="industry-tag">Computer Vision · Agentic AI</span>
         </div>
+
+        <!-- Capability 1 — Bin Monitoring -->
+        <div class="mfg-cap" data-reveal>
+          <div class="mfg-cap-head">
+            <h4>Bin monitoring &amp; part counting</h4>
+            <span class="tag">Computer Vision</span>
+          </div>
+          <p class="mfg-cap-desc">Vision models watch bins, totes and kitting trays on the line — localizing and
+            counting every part against the expected kit, so missing, extra or mixed-up parts surface in real time,
+            before they reach assembly.</p>
+          <div class="shot-grid">
+            <figure class="shot">
+              <div class="frame">
+                <img src="assets/manufacturing/bin-monitor-1.jpg" width="1195" height="795" loading="lazy"
+                     alt="Vision model detecting and counting individual parts inside a divided kitting tray, each item boxed within a defined sample area." />
+              </div>
+              <figcaption><span class="dot" aria-hidden="true"></span><span><b>Kitting tray</b> — each part localized and counted in the sample area.</span></figcaption>
+            </figure>
+            <figure class="shot">
+              <div class="frame">
+                <img src="assets/manufacturing/bin-monitor-2.jpg" width="1200" height="781" loading="lazy"
+                     alt="Parts detected in each compartment of a divided orange tote, with per-cell bounding boxes." />
+              </div>
+              <figcaption><span class="dot" aria-hidden="true"></span><span><b>Divided tote</b> — per-compartment detection and count.</span></figcaption>
+            </figure>
+          </div>
+          <div class="mfg-chips"><span>Object detection</span><span>Counting</span><span>Edge / on-prem</span></div>
+        </div>
+
+        <!-- Capability 2 — Surface Defect -->
+        <div class="mfg-cap" data-reveal>
+          <div class="mfg-cap-head">
+            <h4>Surface &amp; finish defect detection</h4>
+            <span class="tag">Computer Vision</span>
+          </div>
+          <p class="mfg-cap-desc">Automated inspection for scratches, dents, crushed fins and finish anomalies at line
+            speed. Each anomaly is localized and classified with a confidence score, so borderline parts are routed for
+            review instead of shipping.</p>
+          <div class="shot-grid">
+            <figure class="shot">
+              <div class="frame">
+                <img src="assets/manufacturing/surface-defect-1.jpg" width="1400" height="764" loading="lazy"
+                     alt="Heat-exchanger fins under inspection with a crushed-fin anomaly localized in a red box, labelled with defect type and 98% confidence." />
+              </div>
+              <figcaption><span class="dot" aria-hidden="true"></span><span><b>Heat-exchanger fins</b> — crushed-fin anomaly, 98% confidence.</span></figcaption>
+            </figure>
+            <figure class="shot">
+              <div class="frame">
+                <img src="assets/manufacturing/surface-defect-2.jpg" width="1195" height="896" loading="lazy"
+                     alt="Condenser surface with a defect region segmented and measured in pixels." />
+              </div>
+              <figcaption><span class="dot" aria-hidden="true"></span><span><b>Condenser</b> — defect region segmented and measured.</span></figcaption>
+            </figure>
+          </div>
+          <div class="mfg-chips"><span>Anomaly detection</span><span>Segmentation</span><span>Line-speed</span></div>
+        </div>
+
+        <!-- Capability 3 — Shop-floor Plant Assistant (commentary left, flipping screenshot right) -->
+        <div class="mfg-cap sf-cap" data-reveal>
+          <div class="sf-copy">
+            <div class="mfg-cap-head">
+              <h4>Shop-floor plant assistant</h4>
+              <span class="tag">Agentic AI · On-device</span>
+            </div>
+            <p class="mfg-cap-desc">Describe a build in plain language and private AI running locally will handle it —
+              checking the bill of materials against live warehouse stock, flagging shortages, suggesting approved swaps,
+              and routing the rectified order to your WMS and supplier EDI. The engine owns the numbers; the AI writes the
+              advisory. Plant and inventory data stay inside your walls.</p>
+            <div class="mfg-chips"><span>Private AI</span><span>On-device</span><span>BOM / WMS</span><span>Agentic</span></div>
+          </div>
+          <figure class="shot sf-carousel" aria-label="Shop-floor order console — four-step flow">
+            <div class="frame">
+              <span class="step" data-sf-step>1</span>
+              <img class="sf-slide is-active" src="assets/manufacturing/shopfloor-1.jpg" width="1500" height="882" loading="lazy"
+                   data-cap="<b>Request in</b> — plain-language build request."
+                   alt="Shop-floor order console home screen inviting a build request in plain language." />
+              <img class="sf-slide" src="assets/manufacturing/shopfloor-2.jpg" width="1500" height="909" loading="lazy"
+                   data-cap="<b>Draft &amp; rectify</b> — checked vs live stock."
+                   alt="AI draft showing 500 requested, 450 fulfillable, one shortage flagged, with a recommended part swap and bill of materials." />
+              <img class="sf-slide" src="assets/manufacturing/shopfloor-3.jpg" width="1500" height="901" loading="lazy"
+                   data-cap="<b>Review &amp; approve</b> — one-click route."
+                   alt="Approval email drafted for the order with an Approve and Route to WMS action." />
+              <img class="sf-slide" src="assets/manufacturing/shopfloor-4.jpg" width="1500" height="908" loading="lazy"
+                   data-cap="<b>Route to WMS</b> — reservation + EDI 850."
+                   alt="WMS reservation payload and supplier EDI 850 purchase order routed, order approved." />
+              <span class="sf-dots" aria-hidden="true"><i class="is-active"></i><i></i><i></i><i></i></span>
+            </div>
+            <figcaption><span class="dot" aria-hidden="true"></span><span data-sf-caption><b>Request in</b> — plain-language build request.</span></figcaption>
+          </figure>
+        </div>
+
+        <!-- Capability 4 — On-time delivery & operations intelligence -->
+        <div class="mfg-cap sf-cap" data-reveal>
+          <div class="sf-copy">
+            <div class="mfg-cap-head">
+              <h4>On-time delivery &amp; operations intelligence</h4>
+              <span class="tag">Analytics · AI copilot</span>
+            </div>
+            <p class="mfg-cap-desc">One live view across production, supply chain, quality and thermal systems — with an
+              AI copilot that has full dashboard context. Track OTIF and on-time-delivery risk, see which suppliers
+              threaten commitments, and ask plain-language questions about any KPI. Predictive milestone tracking flags
+              shipments likely to slip before they do.</p>
+            <div class="mfg-chips"><span>OTIF / OTD</span><span>Live dashboards</span><span>AI copilot</span><span>Predictive</span></div>
+          </div>
+          <figure class="shot sf-carousel" aria-label="Operations intelligence dashboard — production, supply chain, quality and thermal systems">
+            <div class="frame">
+              <span class="step" data-sf-step>1</span>
+              <img class="sf-slide is-active" src="assets/manufacturing/ops-production.jpg" width="1600" height="865" loading="lazy"
+                   data-cap="<b>Production</b> — output vs plan, OEE and downtime."
+                   alt="Production dashboard: units today, OEE, downtime and work-in-progress KPIs with output-vs-plan and downtime-cause charts, and an AI assistant panel." />
+              <img class="sf-slide" src="assets/manufacturing/ops-supply-chain.jpg" width="1600" height="860" loading="lazy"
+                   data-cap="<b>Supply chain</b> — OTIF, at-risk suppliers, delivery risk."
+                   alt="Supply chain dashboard: OTIF, inventory days, open POs and at-risk suppliers, with OTIF trend and supplier delivery performance table." />
+              <img class="sf-slide" src="assets/manufacturing/ops-quality.jpg" width="1600" height="860" loading="lazy"
+                   data-cap="<b>Quality</b> — defect Pareto, first-pass yield, CAPAs."
+                   alt="Quality dashboard: defect rate, first pass yield, customer PPM and warranty cost with defect Pareto and open CAPA register." />
+              <img class="sf-slide" src="assets/manufacturing/ops-thermal.jpg" width="1600" height="856" loading="lazy"
+                   data-cap="<b>Thermal systems</b> — efficiency, heat load, rig profile."
+                   alt="Thermal systems dashboard: thermal efficiency, heat rejection, coolant delta-T and leak rate with rig temperature profile and heat-load distribution." />
+              <span class="sf-dots" aria-hidden="true"><i class="is-active"></i><i></i><i></i><i></i></span>
+            </div>
+            <figcaption><span class="dot" aria-hidden="true"></span><span data-sf-caption><b>Production</b> — output vs plan, OEE and downtime.</span></figcaption>
+          </figure>
+        </div>
+
+        <!-- Roadmap items still in build -->
+        <p class="cap-roadmap-head">More manufacturing capabilities in build</p>
         <div class="svc-grid">
-          <article class="svc-tile">
-            <span class="svc-icon" aria-hidden="true">📦</span>
-            <h3>Bin Monitoring</h3>
-            <p>Vision-based monitoring of bins and totes on the line for fill level, presence and part mix-ups.</p>
-            <span class="status status--soon">Details coming soon</span>
-          </article>
-          <article class="svc-tile">
-            <span class="svc-icon" aria-hidden="true">🔍</span>
-            <h3>Surface Defect</h3>
-            <p>Automated surface-defect detection for scratches, dents and finish anomalies at line speed.</p>
-            <span class="status status--soon">Details coming soon</span>
-          </article>
-          <article class="svc-tile">
-            <span class="svc-icon" aria-hidden="true">🤖</span>
-            <h3>Shop-floor Plant Chatbot</h3>
-            <p>A plant-floor assistant answering process, machine and procedure questions in natural language.</p>
-            <span class="status status--soon">Details coming soon</span>
-          </article>
-          <article class="svc-tile">
-            <span class="svc-icon" aria-hidden="true">🚚</span>
-            <h3>On-Time Delivery</h3>
-            <p>Predictive tracking of order and shipment milestones to protect on-time-delivery commitments.</p>
-            <span class="status status--soon">Details coming soon</span>
-          </article>
           <article class="svc-tile">
             <span class="svc-icon" aria-hidden="true">📋</span>
             <h3>Digital SOP</h3>
@@ -504,7 +705,7 @@
   </main>
 
   <footer>
-    <p>© 2026 IbhanAi Labs. · <a href="index.html">Back to Home</a> · <a href="platform.html">Products</a> · <a href="blog/">Blog</a> · <a href="https://www.linkedin.com/company/kukku-ai-solutions" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+    <p>© 2026 IbhanAi Labs. · <a href="index.html">Back to Home</a> · <a href="platform.html">Products</a> · <a href="blog/">Blog</a> · <a href="https://www.linkedin.com/company/ibhanai-labs" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
   </footer>
 
   <script>
@@ -546,6 +747,25 @@
         }, 2400);
       }
     }
+
+    // Auto-flipping screenshot carousels (each slide carries its caption in data-cap)
+    document.querySelectorAll(".sf-carousel").forEach((car, ci) => {
+      const slides = Array.from(car.querySelectorAll(".sf-slide"));
+      const dots = Array.from(car.querySelectorAll(".sf-dots i"));
+      const stepEl = car.querySelector("[data-sf-step]");
+      const capEl = car.querySelector("[data-sf-caption]");
+      if (slides.length < 2) return;
+      let i = 0;
+      const show = (n) => {
+        slides.forEach((s, k) => s.classList.toggle("is-active", k === n));
+        dots.forEach((d, k) => d.classList.toggle("is-active", k === n));
+        if (stepEl) stepEl.textContent = String(n + 1);
+        if (capEl) capEl.innerHTML = slides[n].getAttribute("data-cap") || "";
+      };
+      show(0);
+      // slight offset per carousel so multiple cards don't flip in lockstep
+      setInterval(() => { i = (i + 1) % slides.length; show(i); }, 2800 + ci * 400);
+    });
   </script>
   <script src="site.js?v=3"></script>
 </body>
