@@ -762,8 +762,12 @@
             obs.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.14, rootMargin: "0px 0px -8% 0px" });
+      }, { threshold: 0, rootMargin: "0px 0px -5% 0px" });
       revealEls.forEach((el) => obs.observe(el));
+      // Safety net: sections taller than the viewport (common on mobile) may never
+      // satisfy the observer, which would leave them stuck invisible. Force-reveal
+      // anything still hidden shortly after load so content can never disappear.
+      setTimeout(() => revealEls.forEach(setVisible), 1400);
     } else {
       revealEls.forEach((el) => setVisible(el));
     }
